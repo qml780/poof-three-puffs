@@ -1,0 +1,1707 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f5f3ed">
+<meta name="description" content="POOF! 点击空白，推动世界。用一圈气浪和一次回声，把软乎乎的小伙伴送回家。">
+<title>POOF! 回声平衡版 · 让每一步有理由</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='4' y='4' width='56' height='56' rx='20' fill='%23f0b6c1'/%3E%3Ccircle cx='23' cy='28' r='4' fill='%23283249'/%3E%3Ccircle cx='41' cy='28' r='4' fill='%23283249'/%3E%3Cpath d='M25 39q7 8 14 0' fill='none' stroke='%23283249' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>@charset "UTF-8";
+:root{--paper:#f5f3ed;--ink:#30384c;--muted:#8c9097;--violet:#a695ce;--gold:#edc676;--dark:#242e45;--line:#e5e3dc;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:var(--paper);color:var(--ink);font-synthesis:none}*{box-sizing:border-box}body{margin:0}button,a{-webkit-tap-highlight-color:transparent}button{font:inherit;border:0;cursor:pointer;color:inherit;touch-action:manipulation}button:focus-visible,a:focus-visible{outline:3px solid #b9a4d9;outline-offset:4px}button:disabled{cursor:default;opacity:.35}button:hover:not(:disabled){filter:brightness(.97)}[hidden]{display:none!important}.shell{max-width:1160px;padding:0 38px;margin:auto}.top{height:94px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}.brand{font-family:"Arial Rounded MT Bold","Trebuchet MS",sans-serif;font-size:37px;font-weight:1000;font-style:italic;letter-spacing:-3px;color:#30384c;text-decoration:none;position:relative}.brand>span{color:#a996cb}.brand-puff{font-size:15px;position:absolute;top:0;right:-21px;color:#d3b064;transform:rotate(15deg)}.top-right{display:flex;align-items:center;gap:9px}.edition{font-size:11px;color:#9b9b98;margin-right:16px}.small-btn{border:1px solid #dedfd6;border-radius:10px;background:transparent;font-size:11px;padding:8px 11px;min-height:33px}.sound{font-size:17px;width:34px;padding:4px}.sound.off{text-decoration:line-through;color:#a9a8a2}.hero{display:flex;align-items:center;justify-content:space-between;padding:34px 0 28px}.eyebrow{font-size:9px;color:#9699a1;letter-spacing:2px;font-weight:650}.hero h1{font-size:31px;letter-spacing:-.8px;font-weight:750;margin:11px 0 9px}.hero h1 em{font-style:normal;color:#8d7cae}.hero p{font-size:12px;color:#91949b;margin:0}.hero-note{display:flex;align-items:center;padding:0 14px;gap:6px;transform:rotate(-3deg)}.hero-note>span:last-child{font-size:10px;color:#aaa69b;margin-left:7px}.tiny-blob{position:relative;display:inline-block;width:29px;height:29px;border-radius:11px 13px 9px 11px;transform:rotate(-9deg);box-shadow:inset -2px -3px 0 #0000000b}.tiny-blob.mint{width:25px;height:25px;transform:rotate(13deg);margin-top:13px}.pink{background:#eeb4c0}.mint{background:#a5d6c4}.tiny-blob i,.tiny-blob b{position:absolute;top:11px;width:3px;height:4px;border-radius:50%;background:#46505b}.tiny-blob i{left:8px}.tiny-blob b{right:8px}.layout{display:grid;grid-template-columns:minmax(0,1.58fr) minmax(270px,1fr);gap:26px;align-items:start}.play-card{background:var(--dark);color:#f6f4f1;padding:24px 25px 17px;border-radius:25px;box-shadow:0 13px 35px #27314912;overflow:hidden}.stage-head{display:flex;justify-content:space-between;align-items:center;gap:10px}.chapter{font-size:9px;letter-spacing:1.5px;color:#a3aec4;font-weight:600}.stage-head h2{margin:9px 0 0;font-size:23px;letter-spacing:-.5px;font-weight:650}.counter{text-align:right;padding-right:2px}.counter strong{display:block;font-size:26px;font-weight:650;color:#e7c887;letter-spacing:1px;font-variant-numeric:tabular-nums;line-height:1.1}.counter>span{font-size:9px;color:#929db5;display:block;margin-top:5px}.phase-strip{display:flex;align-items:center;gap:12px;margin:19px 0 16px}.phase{display:flex;align-items:center;gap:7px;font-size:10px;color:#8d99af;background:#1e273c;padding:8px 10px;border:1px solid #344059;border-radius:9px;flex:1;transition:all .2s}.phase b{font-size:14px;font-weight:400}.phase i{height:4px;width:4px;border-radius:50%;background:#5c6881;margin-left:auto}.phase.current{color:#d8bd85}.phase.current i{background:#dfbd73}.phase-arrow{font-size:13px;color:#626f88}.phase.echo.ready{color:#c0abe6;border-color:#6d5d91;background:#342e4c}.phase.echo.ready i{background:#bca1eb}.phase.active{box-shadow:0 0 0 1px currentColor}.board-wrap{position:relative;background:#1e283d;border-radius:16px;padding:10px;border:1px solid #3a4660;isolation:isolate}.board{--gap:6px;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));grid-template-rows:repeat(6,minmax(0,1fr));gap:var(--gap);aspect-ratio:1;position:relative;user-select:none}.cell{background:#303c56;border-radius:11px;padding:0;min-width:0;position:relative;box-shadow:inset 0 -2px 0 #29344b;transition:background .15s,box-shadow .15s;color:#a8b4c9}.cell:hover:not(.wall):not(.occupied){background:#3d4860}.cell.selected{background:#494958;box-shadow:inset 0 0 0 1.5px #e4c481}.cell.selected::before{content:'✦';font-size:23px;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);color:#f2d393;opacity:.9}.cell.wall{background:repeating-linear-gradient(135deg,#59637b 0 7px,#546077 7px 14px);box-shadow:inset 0 -4px 0 #454f67;cursor:default}.cell.wall::after{content:'';position:absolute;inset:12px;border-top:2px solid #707991;border-radius:5px}.cell.occupied{cursor:default}.goal{position:absolute;inset:18%;border:2px dashed var(--color);border-radius:50%;display:grid;place-items:center;color:var(--color);font-size:17px;opacity:.7;pointer-events:none}.goal.done{background:color-mix(in srgb,var(--color) 13%,transparent);opacity:1;border-style:solid}.cell.echo-mark{outline:1.5px dashed #b7a0de;outline-offset:-6px}.echo-symbol{position:absolute;top:4px;right:6px;color:#c3a9eb;font-size:15px;pointer-events:none}.cell.hinted{animation:hint 1s ease-in-out infinite}.tutorial-marker{position:absolute;inset:0;display:grid;place-items:center;color:#f0d496;font-size:24px;animation:hint 1.5s infinite;border-radius:11px;pointer-events:none}.preview-layer,.pieces,.effects{position:absolute;inset:10px;width:calc(100% - 20px);height:calc(100% - 20px);pointer-events:none;overflow:visible}.pieces,.effects{--gap:6px}.pieces{z-index:3}.preview-layer{z-index:4}.effects{z-index:5}.piece{--color:#efb4bf;position:absolute;left:calc(var(--x) * (100% + var(--gap)) / 6);top:calc(var(--y) * (100% + var(--gap)) / 6);width:calc((100% - 5 * var(--gap)) / 6);height:calc((100% - 5 * var(--gap)) / 6);display:grid;place-items:center;transition:left .26s cubic-bezier(.2,.85,.3,1.2),top .26s cubic-bezier(.2,.85,.3,1.2)}.blob{width:77%;height:76%;position:relative;border-radius:40% 44% 35% 39%;background:linear-gradient(145deg,color-mix(in srgb,var(--color) 83%,white),var(--color));box-shadow:inset -4px -5px 0 #28304515,inset 3px 3px 0 #ffffff40,0 5px 0 #101c332b,0 8px 14px #111c3226;transform:rotate(-6deg);transition:filter .2s}.piece:nth-child(2) .blob{transform:rotate(6deg);border-radius:42% 37% 43% 34%}.piece:nth-child(3) .blob{transform:rotate(-2deg);border-radius:35% 42% 36% 44%}.blob .eye{position:absolute;top:37%;width:7%;height:10%;background:#344156;border-radius:50%;box-shadow:0 -1px 0 #ffffff22}.eye.l{left:31%}.eye.r{right:30%}.mouth{position:absolute;left:43%;top:49%;width:15%;height:11%;border-bottom:2px solid #485265;border-radius:50%}.cheek{position:absolute;top:52%;width:13%;height:7%;background:#c9788750;border-radius:50%}.cheek.l{left:17%}.cheek.r{right:16%}.badge{position:absolute;left:42%;top:12%;font-size:9px;color:#4f5c6960}.piece.home .blob{filter:brightness(1.06)}.piece.bounce .blob{animation:squish .35s ease-out}.ripple{position:absolute;border:3px solid var(--wave);width:8%;height:8%;border-radius:50%;left:calc((var(--x) + .5) * (100% + var(--gap)) / 6 - var(--gap) / 2);top:calc((var(--y) + .5) * (100% + var(--gap)) / 6 - var(--gap) / 2);transform:translate(-50%,-50%);animation:ripple .6s ease-out forwards;box-shadow:0 0 10px color-mix(in srgb,var(--wave) 50%,transparent)}.poof-word{position:absolute;left:calc((var(--x) + .5) * 100% / 6);top:calc((var(--y) + .5) * 100% / 6);font-size:14px;font-weight:900;font-style:italic;letter-spacing:.8px;color:var(--wave);transform:translate(-50%,-50%) rotate(-12deg);animation:word .65s ease-out forwards;text-shadow:0 2px 8px #172438}.board-meta{display:flex;justify-content:space-between;align-items:center;margin:15px 1px 16px;color:#8997af;font-size:10px;gap:8px}.home-progress{display:flex;align-items:center;gap:6px}.home-progress i{width:5px;height:5px;border-radius:50%;background:#9dcab6;margin-right:2px}.home-progress strong{color:#c3d5cf;font-size:11px;font-weight:500}.board-size{letter-spacing:1px;font-size:9px}.action-bar{display:flex;justify-content:space-between;align-items:center;border-top:1px solid #3a445b;padding-top:15px;gap:12px}.action-bar>div strong{font-size:12px;font-weight:550;display:block}.action-bar>div span{font-size:10px;color:#8997af;display:block;margin-top:6px}.poof-btn{background:#e7c57f;border:1px solid #f1d594;border-radius:12px;font-family:"Trebuchet MS",sans-serif;font-weight:900;font-size:23px;letter-spacing:-.5px;padding:10px 20px;min-width:135px;color:#343b4d;box-shadow:0 3px 0 #ab8d55;transition:transform .15s}.poof-btn>span{font-size:18px;margin-left:9px}.poof-btn:active:not(:disabled){transform:translateY(2px);box-shadow:0 1px 0 #ab8d55}.sidebar{display:flex;flex-direction:column;gap:16px}.mission-card,.level-card{background:#fffdf8;border:1px solid #e4e2d9;border-radius:19px;padding:22px;box-shadow:0 3px 18px #343c5003}.section-label{font-size:10px;color:#929195;letter-spacing:1px;font-weight:600}.mission-card h3{font-size:18px;font-weight:650;line-height:1.5;margin:12px 0 10px}.mission-card>p{font-size:12px;line-height:1.85;color:#8b8c92;margin:0;min-height:44px}.goal-legend{display:flex;gap:10px;margin-top:17px;padding-top:16px;border-top:1px solid #eeece5}.goal-pair{display:flex;align-items:center;gap:6px;font-size:9px;color:#999b9c}.goal-dot{width:18px;height:18px;background:var(--color);border-radius:7px;display:grid;place-items:center;font-size:8px;color:#34415688}.goal-ring{width:21px;height:21px;border:1.5px dashed var(--color);border-radius:50%;display:grid;place-items:center;color:var(--color);font-size:9px}.section-heading{display:flex;align-items:center;justify-content:space-between}.section-heading>span:last-child{font-size:10px;color:#9b9aa0}.chapter-label{display:flex;align-items:center;justify-content:space-between;margin:18px 0 10px;color:#9b9da2;font-size:9px;letter-spacing:.3px}.chapter-dot{width:5px;height:5px;border-radius:50%;background:#d7bd83}.echo-chapter{color:#a08cb9;margin-top:16px}.level-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.level-btn{position:relative;background:#f1f0e9;border-radius:11px;min-height:45px;font-size:15px;color:#8b9099;box-shadow:inset 0 -2px 0 #e7e7de;font-variant-numeric:tabular-nums}.level-btn.echo{background:#efebf5;color:#9b88b4;box-shadow:inset 0 -2px 0 #e6dfed}.level-btn.active{background:#313c52;color:#fffaf0;box-shadow:0 3px 9px #303c5219}.level-btn.complete::after{content:'✓';font-size:8px;position:absolute;right:6px;top:4px;color:#7fa594}.level-btn.active.complete::after{color:#d4ddbb}.level-btn small{font-size:7px;letter-spacing:.5px;display:block;margin-top:3px;color:#b9a06f}.tools{display:flex;border:1px solid #e0ded6;background:#eeece5;border-radius:13px;padding:11px 0}.tools button{display:flex;align-items:center;justify-content:center;gap:6px;flex:1;background:transparent;font-size:11px;color:#7a7f8a;padding:2px 5px}.tools button+button{border-left:1px solid #dddcd4}.tools button>span:first-child{font-size:17px}.tools kbd{font:8px "Segoe UI",sans-serif;color:#a5a5a4;border:1px solid #d9d9d1;border-radius:3px;padding:1px 3px}.status{font-size:11px;color:#858294;line-height:1.85;border-left:2px solid #bdadd2;padding-left:12px;min-height:42px}.status.error{color:#a5846d;border-color:#d1b68c}.rule-note{display:flex;gap:10px;padding:0 2px;color:#a49f8a}.rule-note>span{font-size:18px;color:#c3b58e}.rule-note p{font-size:10px;line-height:1.9;margin:0;color:#9d9ca0}.legend-note{display:flex;gap:15px;justify-content:center;font-size:9px;color:#a5a1a5}.legend-note>span{display:flex;align-items:center;gap:5px}.legend-dot{width:5px;height:5px;border-radius:50%}.legend-dot.gold{background:#d8ba7a}.legend-dot.violet{background:#ae96c7}footer{display:flex;justify-content:space-between;margin:25px 0 30px;color:#a6a4a3;font-size:10px}footer>span:last-child{font-size:8px;letter-spacing:1.1px}.win-overlay{position:absolute;inset:0;z-index:10;background:#1d293fd9;display:flex;align-items:center;justify-content:center;border-radius:15px;padding:20px;backdrop-filter:blur(5px)}.win-card{text-align:center;width:285px}.win-decoration{font-size:42px;color:#f0d491;line-height:1;margin-bottom:13px}.stars{font-size:22px;letter-spacing:7px;color:#ebc782}.win-card h3{font-size:23px;color:#f5f0e5;margin:15px 0 12px}.win-card p{color:#a3afc3;font-size:12px;line-height:1.8;margin:0}.next-btn{border-radius:11px;background:#e6c581;color:#344055;font-size:13px;font-weight:650;width:100%;padding:14px 19px;margin-top:21px;box-shadow:0 3px 0 #a58b58}.text-btn{background:transparent;color:#a0adc3;font-size:11px;padding-top:16px}.win-card{animation:arrive .3s ease-out}dialog{border:1px solid #e4dfd2;border-radius:22px;padding:0;background:#fffdf8;color:var(--ink);max-width:440px;width:calc(100% - 40px);box-shadow:0 20px 80px #202b3b30}dialog::backdrop{background:#202b3b9c;backdrop-filter:blur(4px)}.help-card{padding:30px;position:relative}.close-btn{position:absolute;right:12px;top:9px;border:0;background:transparent;font-size:25px;color:#969799}.help-card h2{font-size:23px;margin:16px 0 24px}.help-step{display:flex;gap:14px;margin:17px 0}.help-step b{font-size:12px;color:#b69bc8;margin-top:3px}.help-step p{font-size:12px;line-height:1.85;margin:0;color:#888b94}.help-card .next-btn{margin-top:14px}.pulse-caption{font-size:17px;fill:#f0d491;font-weight:800}.board-wrap.invalid{animation:shake .22s}.ghost-number{font-size:14px;fill:#fff8e8;font-weight:750;text-anchor:middle}.wait .cell{cursor:wait}.preview-dot{fill:#f0d291}.hinting{animation:hint 1s infinite}
+@keyframes ripple{to{width:115%;height:115%;opacity:0;border-width:1px}}@keyframes word{0%{opacity:0;transform:translate(-50%,-20%) rotate(-12deg) scale(.7)}20%{opacity:1}100%{opacity:0;transform:translate(-50%,-120%) rotate(-12deg) scale(1.15)}}@keyframes squish{0%,100%{scale:1}40%{scale:1.12 .87}}@keyframes hint{50%{box-shadow:inset 0 0 0 2px #e6cb90,0 0 14px #e6cb904a}}@keyframes arrive{from{opacity:.3;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}@keyframes shake{25%{translate:-3px}75%{translate:3px}}
+@media(max-width:950px){.shell{padding:0 25px}.layout{grid-template-columns:minmax(0,1.45fr) minmax(245px,1fr);gap:18px}.play-card{padding:21px 19px 16px}.mission-card,.level-card{padding:18px}.hero-note{display:none}.hero h1{font-size:29px}.phase{font-size:9px;padding:7px 8px}.phase-strip{gap:7px}.stage-head h2{font-size:20px}.piece .badge{font-size:7px}.edition{display:none}}
+@media(max-width:680px){.shell{max-width:500px;padding:0 16px}.top{height:72px}.brand{font-size:32px}.small-btn{font-size:10px;padding:7px 9px;min-height:30px}.sound{font-size:17px}.top-right{gap:6px}.hero{padding:23px 0 21px}.eyebrow{font-size:8px;letter-spacing:1.5px}.hero h1{font-size:25px;margin:9px 0 8px}.hero p{font-size:10px}.layout{grid-template-columns:1fr;gap:15px}.play-card{padding:19px 18px 15px;border-radius:20px}.stage-head h2{font-size:20px}.chapter{font-size:8px}.counter strong{font-size:24px}.phase-strip{margin:16px 0 14px}.phase{font-size:9px}.board-wrap{padding:8px;border-radius:13px}.board,.pieces,.effects{--gap:5px}.preview-layer,.pieces,.effects{inset:8px;width:calc(100% - 16px);height:calc(100% - 16px)}.cell{border-radius:8px}.cell.wall::after{inset:8px}.board-meta{margin:13px 0 14px;font-size:9px}.action-bar{padding-top:13px}.poof-btn{font-size:21px;min-width:123px;padding:9px 17px}.action-bar>div strong{font-size:11px}.action-bar>div span{font-size:9px}.sidebar{display:grid;grid-template-columns:1fr;gap:12px}.mission-card{padding:16px 18px}.mission-card h3{font-size:16px;margin:8px 0}.mission-card>p{font-size:11px;min-height:0}.goal-legend{margin-top:12px;padding-top:11px}.level-card{padding:16px 18px}.chapter-label{margin-top:13px}.level-grid{gap:9px}.level-btn{min-height:40px}.tools{order:-1}.status{font-size:10px;min-height:0}.rule-note p{font-size:10px}.legend-note{font-size:8px}footer{font-size:9px;gap:15px;line-height:1.7}footer>span:last-child{font-size:7px;max-width:110px;text-align:right}.goal{font-size:12px;border-width:1.5px}.win-card h3{font-size:20px}.win-card{width:240px}.win-decoration{font-size:33px}.stars{font-size:19px}.piece .badge{font-size:7px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+
+.chapter-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:5px;margin-top:17px}.chapter-tab{background:#f1eee7;border:1px solid #e8e3db;border-radius:8px;padding:8px 3px;font-size:9px;min-height:34px;color:#92909c;white-space:nowrap}.chapter-tab.active{background:#e7dff2;border-color:#d4c8e1;color:#79638f}.chapter-tabs+.chapter-label{margin-top:14px}
+
+.prediction-card{border:1px solid #e2dccc;background:#f1eee5;border-radius:13px;padding:14px 16px}.prediction-card p{font-size:11px;line-height:1.95;color:#7b7c88;white-space:pre-line;margin:7px 0 0}.prediction-card .danger{color:#a56f53}.home-tag{position:absolute;z-index:6;right:2px;top:2px;border:1.5px solid var(--color);color:var(--color);background:#253149;border-radius:50%;width:15px;height:15px;font-size:8px;display:grid;place-items:center;pointer-events:none}.status{white-space:pre-line}
+.level-grid{grid-template-columns:repeat(3,1fr)}.play-card{scroll-margin-top:16px}.preview-tabs{display:flex;justify-content:flex-end;gap:5px;margin:-5px 0 12px}.preview-tabs button{background:#303b52;color:#aab6cc;border:1px solid #46516b;padding:5px 10px;border-radius:7px;font-size:10px;min-height:29px}.preview-tabs button.active{background:#554c68;color:#e1c9f4;border-color:#88749f}.play-card .prediction-card{background:#1f2a40;border:1px solid #3b4760;border-radius:10px;padding:11px 13px;margin:0 0 14px}.play-card .prediction-card .section-label{font-size:9px;color:#a7b7d1}.play-card .prediction-card p{font-size:11px;color:#c0cada;line-height:1.8;margin-top:6px}.play-card .prediction-card p.danger{color:#e9bd98}.mission-card>p{color:#707480}.status{font-size:12px;color:#746783}.rule-note p{color:#7e808b}.board-meta{flex-wrap:wrap}.board-size{display:none}.phase{min-width:0}.phase>span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.board-wrap{width:min(100%,max(280px,calc(100dvh - 410px)));margin-inline:auto}
+@media(max-width:680px){.play-card .prediction-card{padding:9px 11px;margin-bottom:12px}.play-card .prediction-card p{font-size:10px}.preview-tabs button{min-height:28px;padding:4px 9px;font-size:9px}.board-meta{font-size:8px}.status{font-size:11px}.phase{font-size:8px}.mission-card>p{font-size:12px}}
+</style>
+
+</head>
+<body>
+<div class="shell">
+  <header class="top"><a class="brand" href="./" aria-label="POOF 首页">POOF<span>!</span><i class="brand-puff">✦</i></a><div class="top-right"><span class="edition" data-i="edition">一声气浪，一点小聪明。</span><button id="language" class="small-btn" aria-label="Switch to English">EN</button><button id="sound" class="small-btn sound" aria-label="关闭音效" aria-pressed="true">♪</button><button id="help" class="small-btn" data-i="help">怎么玩</button></div></header>
+  <main>
+    <section class="hero"><div><div class="eyebrow">TOUCH NOTHING. MOVE EVERYONE.</div><h1 data-i="headline">点一下，<em>大家都动起来。</em></h1><p data-i="subhead">不碰小伙伴，用一圈气浪把它们送回家。</p></div><div class="hero-note"><span class="tiny-blob pink"><i></i><b></b></span><span class="tiny-blob mint"><i></i><b></b></span><span data-i="heroNote">轻轻一吹，刚刚好。</span></div></section>
+    <div class="layout">
+      <section class="play-card" aria-label="POOF 游戏区域">
+        <div class="stage-head"><div><div class="chapter" id="chapter">CHAPTER 01 · 小小气浪</div><h2 id="level-title"></h2></div><div class="counter"><strong id="moves">00</strong><span data-i="moves">次气浪</span></div></div>
+        <div class="phase-strip"><div class="phase current" id="phase-one"><b>①</b><span data-i="phaseOne">这次气浪</span><i></i></div><span class="phase-arrow">→</span><div class="phase echo" id="phase-two"><b>②</b><span id="echo-label">回声还在睡觉</span><i></i></div></div>
+        <div class="preview-tabs" id="preview-tabs" role="group" aria-label="分开查看两段推动"><button data-preview="all" class="active" aria-pressed="true">全部预览</button><button data-preview="first" aria-pressed="false">只看 ①</button><button data-preview="second" aria-pressed="false">只看 ②</button></div>
+        <div class="board-wrap" id="board-wrap"><div class="board" id="board" role="group" aria-label="6 行 6 列游戏棋盘"></div><svg class="preview-layer" id="preview" viewBox="0 0 600 600" aria-hidden="true"></svg><div class="pieces" id="pieces" aria-hidden="true"></div><div class="effects" id="effects" aria-hidden="true"></div>
+          <div class="win-overlay" id="win" hidden><div class="win-card"><div class="win-decoration">✦</div><div id="stars" class="stars">★★★</div><h3 id="win-title"></h3><p id="win-detail"></p><button id="next" class="next-btn"></button><button id="replay" class="text-btn" data-i="replay">再来一次，吹得更漂亮</button></div></div>
+        </div>
+        <div class="board-meta"><span class="home-progress"><i></i><span data-i="home">朋友到家</span><strong id="home-count">0 / 1</strong></span><span id="par"></span><span class="board-size">6 × 6</span></div>
+        <section class="prediction-card"><span class="section-label" data-i="predictionTitle">这一声会怎样</span><p id="prediction"></p></section>
+        <div class="action-bar"><div><strong id="selection-title" data-i="select">选一块空地</strong><span id="selection-detail" data-i="selectDetail">悬停预览 · 点击释放</span></div><button id="release" class="poof-btn" disabled>POOF! <span>↗</span></button></div>
+      </section>
+      <aside class="sidebar">
+        <section class="mission-card"><span class="section-label" data-i="mission">这一关的推理</span><h3 id="mission-title"></h3><p id="tip"></p><div class="goal-legend" id="goal-legend"></div></section>
+        <section class="level-card"><div class="section-heading"><span class="section-label" data-i="journey">关卡地图</span><span id="completion">0 / 24</span></div><nav class="chapter-tabs" id="chapter-tabs" aria-label="选择章节"></nav><div class="chapter-label"><span id="chapter-range">01 — 06 · 交点与挡风</span></div><nav class="level-grid" id="level-list" aria-label="选择关卡"></nav></section>
+        <div class="tools"><button id="undo" disabled><span>↩</span><span data-i="undo">撤销</span><kbd>Z</kbd></button><button id="restart"><span>↻</span><span data-i="restart">重来</span><kbd>R</kbd></button><button id="hint"><span>✧</span><span data-i="hint">提示</span><kbd>H</kbd></button></div>
+        <div class="status" id="status" role="status" aria-live="polite"></div>
+        <div class="rule-note"><span>✦</span><p id="lesson"></p></div>
+        <div class="legend-note"><span><i class="legend-dot gold"></i><span data-i="gold">金色：本次推动</span></span><span><i class="legend-dot violet"></i><span data-i="violet">紫色：上次回声</span></span></div>
+      </aside>
+    </div>
+    <footer><span data-i="footer">没有倒计时。慢慢想，随时退一步。</span><span>POOF! · A TINY PUZZLE ADVENTURE</span></footer>
+  </main>
+</div>
+<dialog id="help-dialog"><div class="help-card"><button id="close-help" class="close-btn" aria-label="关闭帮助">×</button><span class="section-label">A LITTLE POOF GOES A LONG WAY.</span><h2 data-i="helpTitle">你不动它，气浪来动。</h2><div class="help-step"><b>01</b><p data-i="helpOne">选一块空地。气浪向四个方向传播，最多三格远，推遇到的第一位朋友一格。</p></div><div class="help-step"><b>02</b><p data-i="helpTwo">墙和朋友都会挡风。只有所有朋友在同色、同图案的小窝里，才算过关。</p></div><div class="help-step"><b>03</b><p data-i="helpThree">回声关卡中：先吹这次的气浪，再从上一次的位置补一声回声。看完两次落点再出手。</p></div><button id="help-play" class="next-btn" data-i="letsPlay">明白啦，吹一下！</button></div></dialog>
+<script>(function (root, factory) {
+  const engine = factory();
+  if (typeof module !== 'undefined' && module.exports) module.exports = engine;
+  else root.PoofEngine = engine;
+})(typeof globalThis === 'undefined' ? this : globalThis, function () {
+  'use strict';
+  const DIRS = [[0, -1], [1, 0], [0, 1], [-1, 0]];
+  const xy = (p, level) => [p % level.w, Math.floor(p / level.w)];
+  const index = (x, y, level) => y * level.w + x;
+  const inside = (x, y, level) => x >= 0 && y >= 0 && x < level.w && y < level.h;
+  const initial = level => ({ positions: [...level.start], echo: null, moves: 0 });
+  const clone = state => ({ positions: [...state.positions], echo: state.echo, moves: state.moves });
+  const won = (state, level) => state.positions.every((p, i) => p === level.goals[i]);
+  function pulse(positions, center, level) {
+    const next = [...positions], hits = [], rays = [];
+    const occupancy = new Map(positions.map((p, i) => [p, i])), walls = new Set(level.walls);
+    const [cx, cy] = xy(center, level);
+    for (const [dx, dy] of DIRS) {
+      const ray = [];
+      for (let distance = 1; distance <= (level.range || 3); distance++) {
+        const x = cx + dx * distance, y = cy + dy * distance;
+        if (!inside(x, y, level)) break;
+        const p = index(x, y, level);
+        if (walls.has(p)) break;
+        ray.push(p);
+        if (!occupancy.has(p)) continue;
+        const piece = occupancy.get(p), tx = x + dx, ty = y + dy;
+        const to = index(tx, ty, level);
+        const blocked = !inside(tx, ty, level) || walls.has(to) || occupancy.has(to);
+        if (!blocked) next[piece] = to;
+        hits.push({ piece, from: p, to: blocked ? p : to, blocked, dx, dy });
+        break;
+      }
+      rays.push(ray);
+    }
+    return { positions: next, hits, rays, center };
+  }
+  function act(state, center, level) {
+    if (!Number.isInteger(center) || center < 0 || center >= level.w * level.h || level.walls.includes(center) || state.positions.includes(center)) return { ok: false };
+    const first = pulse(state.positions, center, level);
+    const second = level.echo && state.echo !== null ? pulse(first.positions, state.echo, level) : null;
+    const next = { positions: second ? second.positions : first.positions, echo: level.echo ? center : null, moves: state.moves + 1 };
+    return { ok: true, state: next, first, second, won: won(next, level), moved: next.positions.some((p, i) => p !== state.positions[i]) };
+  }
+  const signature = state => state.positions.join(',') + '|' + (state.echo === null ? '-' : state.echo);
+  // Outward-only pushes cannot bring a friend back from an outside edge.
+  // Pruning these permanent dead ends keeps larger puzzles responsive.
+  function stranded(positions, level) {
+    return positions.some((p, i) => {
+      const [x, y] = xy(p, level), [gx, gy] = xy(level.goals[i], level);
+      return (x === 0 && gx !== 0) || (x === level.w - 1 && gx !== x) || (y === 0 && gy !== 0) || (y === level.h - 1 && gy !== y);
+    });
+  }
+  function search(level, start = initial(level), maxStates = 160000) {
+    const startKey = signature(start);
+    const queue = [{ state: clone(start), parent: -1, action: null }], seen = new Set([startKey]);
+    let at = 0, finished = false;
+    const actions = Array.from({ length: level.w * level.h }, (_, i) => i).filter(i => !level.walls.includes(i));
+    function advance(budget = 400) {
+      if (finished) return { done: true, path: null };
+      let processed = 0;
+      while (at < queue.length && at < maxStates && processed++ < budget) {
+        const me = at++, node = queue[me];
+        if (won(node.state, level)) {
+          const path = []; let cur = me;
+          while (queue[cur].parent !== -1) { path.push(queue[cur].action); cur = queue[cur].parent; }
+          finished = true;
+          return { done: true, path: path.reverse(), visited: seen.size };
+        }
+        for (const action of actions) {
+          const result = act(node.state, action, level);
+          if (!result.ok || stranded(result.state.positions, level)) continue;
+          const key = signature(result.state);
+          if (seen.has(key)) continue;
+          seen.add(key); queue.push({ state: result.state, parent: me, action });
+        }
+      }
+      if (at >= queue.length || at >= maxStates) { finished = true; return { done: true, path: null, limited: at >= maxStates, visited: seen.size }; }
+      return { done: false, visited: seen.size };
+    }
+    return { advance };
+  }
+  function solve(level, state = initial(level), maxStates) {
+    const finder = search(level, state, maxStates);
+    let result;
+    do { result = finder.advance(20000); } while (!result.done);
+    return result.path;
+  }
+  return { DIRS, xy, index, inside, initial, clone, won, pulse, act, signature, search, solve };
+});
+</script>
+<script>(function(root){
+const levels=[
+  {
+    "title": "轻轻一吹",
+    "subtitle": "让第一位朋友回家",
+    "start": [
+      20
+    ],
+    "goals": [
+      21
+    ],
+    "walls": [],
+    "echo": false,
+    "tip": "想让它往右，就在它左边吹一口气。",
+    "lesson": "点击空白格。气浪只沿上、下、左、右传播，把每个方向遇到的第一位朋友推一格。",
+    "id": 1,
+    "w": 6,
+    "h": 6,
+    "range": 3,
+    "par": 1,
+    "solution": [
+      18
+    ],
+    "en": [
+      "A gentle puff",
+      "Bring your first friend home",
+      "To move Pink right, blow from its left.",
+      "A puff reaches three tiles and moves the first friend on each ray one tile."
+    ],
+    "logic": "想向右走，气浪就要从左边来。先看粉色与小窝的位置。",
+    "logicEn": "A push to the right needs a source on the left. Look at Pink and its home.",
+    "hintSteps": [
+      "从粉色左边吹气，让它向右一格回家。"
+    ],
+    "hintStepsEn": [
+      "Puff from the left to send Pink one tile right into its home."
+    ],
+    "chapter": 1,
+    "scoreKey": "balance-v1-1",
+    "hintMode": "progressive",
+    "difficulty": "start",
+    "clue": "想向右走，气浪就要从左边来。先看粉色与小窝的位置。",
+    "clueEn": "A push to the right needs a source on the left. Look at Pink and its home.",
+    "focus": 19
+  },
+  {
+    "title": "一声，两位到家",
+    "subtitle": "找到它们之间的交点",
+    "start": [
+      14,
+      21
+    ],
+    "goals": [
+      8,
+      22
+    ],
+    "walls": [],
+    "echo": false,
+    "tip": "有没有一个空格，既在粉色朋友下方，又在绿色朋友左边？",
+    "lesson": "一次气浪，可以同时推动四个方向的朋友。找到那个刚刚好的交点。",
+    "id": 2,
+    "w": 6,
+    "h": 6,
+    "range": 3,
+    "par": 1,
+    "solution": [
+      20
+    ],
+    "en": [
+      "One puff, two homes",
+      "Find the intersection",
+      "Look for an empty tile below Pink and left of Mint.",
+      "One puff can help several friends when their useful rays meet."
+    ],
+    "logic": "粉色要向上，绿色要向右。两条作用线在哪里相交？",
+    "logicEn": "Pink needs to go up, Mint right. Where do their source lines meet?",
+    "hintSteps": [
+      "交点同时在粉色下面、绿色左边。一声分别向上和向右送两位回家。"
+    ],
+    "hintStepsEn": [
+      "Use the intersection below Pink and left of Mint. One puff sends both home."
+    ],
+    "chapter": 1,
+    "scoreKey": "balance-v1-2",
+    "hintMode": "progressive",
+    "difficulty": "start",
+    "clue": "粉色要向上，绿色要向右。两条作用线在哪里相交？",
+    "clueEn": "Pink needs to go up, Mint right. Where do their source lines meet?"
+  },
+  {
+    "id": 3,
+    "w": 6,
+    "h": 6,
+    "range": 3,
+    "title": "先让出施力位",
+    "subtitle": "先让绿色离开，粉色才能向右",
+    "start": [
+      14,
+      13
+    ],
+    "goals": [
+      15,
+      19
+    ],
+    "walls": [],
+    "echo": false,
+    "solution": [
+      7,
+      12
+    ],
+    "logic": "粉色要向右，必须从它左边吹气。绿色正挡在这条作用线上，先送绿色向下。",
+    "logicEn": "Pink needs a puff from the left, but Mint blocks that line. Settle Mint below first.",
+    "hintSteps": [
+      "先把绿色向下送进小窝，空出粉色左边的作用线。",
+      "现在从左侧吹粉色。选择第 1 列，不会碰到下方已到家的绿色。"
+    ],
+    "hintStepsEn": [
+      "Move Mint down into its home, clearing the line to Pink.",
+      "Blow from column 1. Pink moves right while Mint, below and out of line, stays home."
+    ],
+    "en": [
+      "Make room for the puff",
+      "Clear Mint before moving Pink right",
+      "Mint blocks every puff from Pink’s left. Move Mint down first.",
+      "A useful puff needs an empty source and a clear line to its friend."
+    ],
+    "tip": "粉色要向右，必须从它左边吹气。绿色正挡在这条作用线上，先送绿色向下。",
+    "lesson": "先让绿色离开，粉色才能向右",
+    "chapter": 1,
+    "scoreKey": "balance-v1-3",
+    "par": 2,
+    "hintMode": "progressive",
+    "difficulty": "start",
+    "clue": "粉色要向右，必须从它左边吹气。绿色正挡在这条作用线上，先送绿色向下。",
+    "clueEn": "Pink needs a puff from the left, but Mint blocks that line. Settle Mint below first."
+  },
+  {
+    "id": 4,
+    "w": 6,
+    "h": 6,
+    "range": 3,
+    "title": "让墙替你守家",
+    "subtitle": "同一声帮两位，墙护住第三位",
+    "start": [
+      14,
+      7,
+      25
+    ],
+    "goals": [
+      16,
+      1,
+      25
+    ],
+    "walls": [
+      19
+    ],
+    "echo": false,
+    "solution": [
+      13,
+      14
+    ],
+    "logic": "粉色要向右、绿色要向上。它们的作用线交在同一格；下方的墙会保护紫色。",
+    "logicEn": "Pink needs to move right and Mint up. Their puff lines intersect; the wall below protects Violet.",
+    "hintSteps": [
+      "点两条作用线的交点：粉色向右、绿色向上。墙截住向下的气浪，紫色不动。",
+      "绿色已经到家。换到粉色左边的空格，把粉色再送一格。"
+    ],
+    "hintStepsEn": [
+      "Use the intersection: Pink goes right, Mint up. The wall stops the downward ray before it reaches Violet.",
+      "Mint is home. Follow into the space left of Pink and push Pink right once more."
+    ],
+    "en": [
+      "Let the wall keep watch",
+      "Help two friends and shelter the third",
+      "One intersection helps Pink and Mint. The wall below shelters Violet.",
+      "A wall can protect a home from an otherwise useful puff."
+    ],
+    "tip": "粉色要向右、绿色要向上。它们的作用线交在同一格；下方的墙会保护紫色。",
+    "lesson": "同一声帮两位，墙护住第三位",
+    "chapter": 1,
+    "scoreKey": "balance-v1-4",
+    "par": 2,
+    "hintMode": "progressive",
+    "difficulty": "start",
+    "clue": "粉色要向右、绿色要向上。它们的作用线交在同一格；下方的墙会保护紫色。",
+    "clueEn": "Pink needs to move right and Mint up. Their puff lines intersect; the wall below protects Violet."
+  },
+  {
+    "id": 5,
+    "w": 6,
+    "h": 6,
+    "range": 3,
+    "title": "先摆阵，再合拍",
+    "subtitle": "把三位朋友摆到同一交点周围",
+    "start": [
+      14,
+      16,
+      19
+    ],
+    "goals": [
+      8,
+      23,
+      18
+    ],
+    "walls": [],
+    "echo": false,
+    "solution": [
+      10,
+      20
+    ],
+    "logic": "粉色和紫色已经围着同一个空格。先把绿色向下挪一格，三位就都能被这一个交点照顾到。",
+    "logicEn": "Pink and Violet already surround the same empty tile. Move Mint down to complete the arrangement.",
+    "hintSteps": [
+      "把绿色向下送一格，让它与紫色站在同一行。",
+      "三位已站在交点的上、右、左方。一声气浪把三位同时送回家。"
+    ],
+    "hintStepsEn": [
+      "Move Mint down one tile so it shares a row with Violet.",
+      "All three surround the intersection. One puff sends them up, right and left into their homes."
+    ],
+    "en": [
+      "Set up, then move together",
+      "Arrange three friends around one intersection",
+      "Move Mint down so it joins Pink and Violet around one empty tile.",
+      "Sometimes the best first move creates a useful shared intersection."
+    ],
+    "tip": "粉色和紫色已经围着同一个空格。先把绿色向下挪一格，三位就都能被这一个交点照顾到。",
+    "lesson": "把三位朋友摆到同一交点周围",
+    "chapter": 1,
+    "scoreKey": "balance-v1-5",
+    "par": 2,
+    "hintMode": "progressive",
+    "difficulty": "start",
+    "clue": "粉色和紫色已经围着同一个空格。先把绿色向下挪一格，三位就都能被这一个交点照顾到。",
+    "clueEn": "Pink and Violet already surround the same empty tile. Move Mint down to complete the arrangement."
+  },
+  {
+    "id": 6,
+    "w": 6,
+    "h": 6,
+    "range": 3,
+    "title": "同伴也是挡风板",
+    "subtitle": "先送粉色，再让紫色离开",
+    "start": [
+      14,
+      19,
+      25
+    ],
+    "goals": [
+      15,
+      19,
+      26
+    ],
+    "walls": [
+      12
+    ],
+    "echo": false,
+    "solution": [
+      13,
+      24
+    ],
+    "logic": "粉色左边只有一个可用的施力格。这里也会吹到绿色，但紫色占着绿色的落点，能替它挡住。",
+    "logicEn": "Pink has only one useful source tile to its left. Its downward ray reaches Mint, but Violet blocks Mint’s landing tile.",
+    "hintSteps": [
+      "先保留紫色的位置。它挡住绿色下方的落点，所以这一声只会把粉色送回家。",
+      "粉色已到家，不再需要挡风。现在从左边把紫色向右送进小窝。"
+    ],
+    "hintStepsEn": [
+      "Keep Violet in place. Mint cannot move into Violet, so this puff settles only Pink.",
+      "Pink is home and no longer needs the shelter. Blow Violet right into its home."
+    ],
+    "en": [
+      "A friend can shelter a friend",
+      "Pink first, then Violet",
+      "Violet blocks Mint’s landing tile. Keep it there while Pink moves home.",
+      "Occupied landing tiles stop a push, even when the air reaches a friend."
+    ],
+    "tip": "粉色左边只有一个可用的施力格。这里也会吹到绿色，但紫色占着绿色的落点，能替它挡住。",
+    "lesson": "先送粉色，再让紫色离开",
+    "chapter": 1,
+    "scoreKey": "balance-v1-6",
+    "par": 2,
+    "hintMode": "progressive",
+    "difficulty": "start",
+    "clue": "粉色左边只有一个可用的施力格。这里也会吹到绿色，但紫色占着绿色的落点，能替它挡住。",
+    "clueEn": "Pink has only one useful source tile to its left. Its downward ray reaches Mint, but Violet blocks Mint’s landing tile."
+  },
+  {
+    "title": "借过一下",
+    "subtitle": "先给朋友让条路",
+    "start": [
+      14,
+      16
+    ],
+    "goals": [
+      16,
+      22
+    ],
+    "walls": [],
+    "echo": false,
+    "tip": "前面有人，气浪就推不动。先让绿色朋友回家，再送粉色朋友过去。",
+    "lesson": "朋友会挡住后面的气浪，也不能被推进另一个朋友的位置。回家后仍然可能被吹走。",
+    "id": 7,
+    "w": 6,
+    "h": 6,
+    "range": 3,
+    "par": 3,
+    "solution": [
+      4,
+      12,
+      12
+    ],
+    "en": [
+      "Let a friend pass",
+      "Free the landing first",
+      "Mint occupies the tile Pink needs to cross.",
+      "Clear the landing before using a shared route."
+    ],
+    "logic": "绿色占着粉色要去的位置。先清出落点，粉色才能通过。",
+    "logicEn": "Mint occupies Pink’s destination. Clear it before sending Pink through.",
+    "hintSteps": [
+      "把绿色向下送回家，给粉色空出右边的落点。",
+      "从左边吹粉色，让它先向右走一格。",
+      "继续从左边吹粉色。绿色已经离开这条横线，不会挡路。"
+    ],
+    "hintStepsEn": [
+      "Send Mint down home to clear Pink’s destination.",
+      "Puff from the left to move Pink right once.",
+      "Puff from the left again. Mint is now outside this row."
+    ],
+    "chapter": 2,
+    "scoreKey": "balance-v1-7",
+    "hintMode": "progressive",
+    "difficulty": "space",
+    "clue": "绿色占着粉色要去的位置。先清出落点，粉色才能通过。",
+    "clueEn": "Mint occupies Pink’s destination. Clear it before sending Pink through."
+  },
+  {
+    "id": 8,
+    "w": 6,
+    "h": 6,
+    "range": 3,
+    "title": "留出下一声的位置",
+    "subtitle": "先挪绿色，再连送粉色向上",
+    "start": [
+      20,
+      26
+    ],
+    "goals": [
+      8,
+      27
+    ],
+    "walls": [],
+    "echo": false,
+    "solution": [
+      25,
+      32,
+      32
+    ],
+    "logic": "粉色要往上，需要从下方吹气。绿色占着下方第一格，直接吹会先碰到绿色。",
+    "logicEn": "Pink needs an upward push. Mint occupies the space below it and intercepts that push.",
+    "hintSteps": [
+      "先把绿色向右送回家，腾出粉色下方的作用线。",
+      "从棋盘最下方吹粉色向上，避开绿色所在的那一行。",
+      "粉色还差一格。同一个施力点仍在三格范围内，再吹一次就能到家。"
+    ],
+    "hintStepsEn": [
+      "Move Mint right into its home, clearing the line below Pink.",
+      "Blow upward from the bottom row, keeping this puff away from Mint’s row.",
+      "Pink needs one more upward step. The same source is still within three tiles, so puff again."
+    ],
+    "en": [
+      "Leave room for the next puff",
+      "Move Mint, then send Pink upward",
+      "Mint sits below Pink and intercepts a puff from underneath. Move Mint right first.",
+      "Plan the source tile for your next move, as well as the landing tile."
+    ],
+    "tip": "粉色要往上，需要从下方吹气。绿色占着下方第一格，直接吹会先碰到绿色。",
+    "lesson": "先挪绿色，再连送粉色向上",
+    "chapter": 2,
+    "scoreKey": "balance-v1-8",
+    "par": 3,
+    "hintMode": "progressive",
+    "difficulty": "space",
+    "clue": "粉色要往上，需要从下方吹气。绿色占着下方第一格，直接吹会先碰到绿色。",
+    "clueEn": "Pink needs an upward push. Mint occupies the space below it and intercepts that push."
+  },
+  {
+    "id": 9,
+    "w": 6,
+    "h": 6,
+    "range": 3,
+    "title": "到家，也要先借位",
+    "subtitle": "临时搬开，最后再回家",
+    "start": [
+      14,
+      13
+    ],
+    "goals": [
+      15,
+      13
+    ],
+    "walls": [
+      1
+    ],
+    "echo": false,
+    "solution": [
+      7,
+      12,
+      25
+    ],
+    "logic": "绿色虽然已到家，却挡住了粉色左侧的气浪。到家不等于锁住，先借位再归位。",
+    "logicEn": "Mint is already home, yet blocks the puff Pink needs. Move Mint aside and return it after Pink settles.",
+    "hintSteps": [
+      "绿色暂时向下让一格。它的小窝先空着，粉色才有机会被吹到。",
+      "把粉色送进右侧小窝，绿色继续留在下面等待。",
+      "粉色的路已走完。从绿色下方吹气，让绿色向上回家。"
+    ],
+    "hintStepsEn": [
+      "Move Mint down temporarily. Its empty home opens the line to Pink.",
+      "Send Pink right into its home, keeping Mint below.",
+      "Pink is settled. Blow from below Mint to bring it back up into its own home."
+    ],
+    "en": [
+      "Home can wait a moment",
+      "Step aside, then come back",
+      "Mint is home, but blocks Pink. Borrow its space, then put it back.",
+      "Home does not lock a friend in place. Sometimes returning must come last."
+    ],
+    "tip": "绿色虽然已到家，却挡住了粉色左侧的气浪。到家不等于锁住，先借位再归位。",
+    "lesson": "临时搬开，最后再回家",
+    "chapter": 2,
+    "scoreKey": "balance-v1-9",
+    "par": 3,
+    "hintMode": "progressive",
+    "difficulty": "space",
+    "clue": "绿色虽然已到家，却挡住了粉色左侧的气浪。到家不等于锁住，先借位再归位。",
+    "clueEn": "Mint is already home, yet blocks the puff Pink needs. Move Mint aside and return it after Pink settles."
+  },
+  {
+    "id": 10,
+    "w": 6,
+    "h": 6,
+    "range": 3,
+    "title": "三位，让路接力",
+    "subtitle": "紫色让给绿色，绿色再让给粉色",
+    "start": [
+      14,
+      13,
+      19
+    ],
+    "goals": [
+      15,
+      19,
+      20
+    ],
+    "walls": [
+      12,
+      25
+    ],
+    "echo": false,
+    "solution": [
+      18,
+      7,
+      13
+    ],
+    "logic": "绿色挡住粉色的施力格，紫色又挡住绿色的落点。顺着这条依赖链，从紫色开始。",
+    "logicEn": "Mint occupies Pink’s source tile, while Violet occupies Mint’s landing. Follow the dependency chain and start with Violet.",
+    "hintSteps": [
+      "先把紫色向右送回家，腾出绿色下方的格子。",
+      "绿色现在可以向下回家，同时空出粉色左边的施力格。",
+      "最后吹粉色向右。绿色下方有墙，不会被这声气浪再推走。"
+    ],
+    "hintStepsEn": [
+      "Move Violet right into its home, freeing the tile beneath Mint.",
+      "Mint can now move down into its home, freeing Pink’s source tile.",
+      "Finally send Pink right. The wall below Mint keeps Mint from being pushed out again."
+    ],
+    "en": [
+      "A three-friend passing relay",
+      "Violet makes room for Mint, then Mint for Pink",
+      "Mint blocks Pink’s source; Violet blocks Mint’s landing. Start at the end of the chain.",
+      "Resolve the blocker of a blocker first, then work back toward the first friend."
+    ],
+    "tip": "绿色挡住粉色的施力格，紫色又挡住绿色的落点。顺着这条依赖链，从紫色开始。",
+    "lesson": "紫色让给绿色，绿色再让给粉色",
+    "chapter": 2,
+    "scoreKey": "balance-v1-10",
+    "par": 3,
+    "hintMode": "progressive",
+    "difficulty": "space",
+    "clue": "绿色挡住粉色的施力格，紫色又挡住绿色的落点。顺着这条依赖链，从紫色开始。",
+    "clueEn": "Mint occupies Pink’s source tile, while Violet occupies Mint’s landing. Follow the dependency chain and start with Violet."
+  },
+  {
+    "id": 11,
+    "w": 6,
+    "h": 6,
+    "range": 3,
+    "title": "归位也有先后",
+    "subtitle": "先让粉色通过，再让绿色归位",
+    "start": [
+      13,
+      21
+    ],
+    "goals": [
+      15,
+      14
+    ],
+    "walls": [
+      16
+    ],
+    "echo": false,
+    "solution": [
+      12,
+      13,
+      22,
+      26
+    ],
+    "logic": "绿色的小窝，正是粉色去右侧小窝必经的中间格。绿色太早归位，会挡住粉色。",
+    "logicEn": "Mint’s home is the middle tile Pink must cross to reach its own home. Finishing Mint too early blocks Pink.",
+    "hintSteps": [
+      "先让粉色走进中间格。暂时不要把绿色送到这里。",
+      "继续把粉色向右送到终点，让中间格重新空出来。",
+      "粉色已通过。把绿色向左挪到自己小窝的下方。",
+      "从下方吹绿色，让它向上归位；粉色不在这条线上。"
+    ],
+    "hintStepsEn": [
+      "Move Pink into the middle tile. Leave Mint’s home temporarily open.",
+      "Move Pink right into its home, clearing the middle tile again.",
+      "Pink has passed. Move Mint left to the tile below its home.",
+      "Blow Mint upward. Pink is outside this puff’s line and stays home."
+    ],
+    "en": [
+      "Home in the right order",
+      "Let Pink pass before Mint settles",
+      "Mint’s home lies on Pink’s route. Settle Pink first so that route stays open.",
+      "A home can also be another friend’s passage. Plan who finishes first."
+    ],
+    "tip": "绿色的小窝，正是粉色去右侧小窝必经的中间格。绿色太早归位，会挡住粉色。",
+    "lesson": "先让粉色通过，再让绿色归位",
+    "chapter": 2,
+    "scoreKey": "balance-v1-11",
+    "par": 4,
+    "hintMode": "progressive",
+    "difficulty": "space",
+    "clue": "绿色的小窝，正是粉色去右侧小窝必经的中间格。绿色太早归位，会挡住粉色。",
+    "clueEn": "Mint’s home is the middle tile Pink must cross to reach its own home. Finishing Mint too early blocks Pink."
+  },
+  {
+    "w": 6,
+    "h": 6,
+    "range": 3,
+    "echo": false,
+    "title": "空位交接，绕回中间",
+    "subtitle": "紫色想往上，粉色要先让开",
+    "start": [
+      14,
+      13,
+      19
+    ],
+    "goals": [
+      21,
+      20,
+      14
+    ],
+    "walls": [
+      12,
+      25
+    ],
+    "solution": [
+      18,
+      7,
+      13,
+      9,
+      26,
+      18
+    ],
+    "logic": "紫色的终点被粉色占着，绿色的终点又在紫色旁边。先留出一个临时停靠格，按让路关系逐段完成。",
+    "logicEn": "Pink occupies Violet’s home, and Mint’s home is beside Violet. Use temporary space and resolve each blocker in turn.",
+    "en": [
+      "Pass the space along",
+      "Pink must clear Violet’s upward landing",
+      "Violet needs Pink’s tile; Mint also needs the space beside Violet. Resolve the blockers one by one.",
+      "Follow the empty space: move aside, pass through, then settle."
+    ],
+    "hintSteps": [
+      "紫色先向右借一格。它还没有到家，但先腾出了绿色下方的落点。",
+      "绿色向下暂时让开，让粉色左边可以吹气。",
+      "粉色先向右走一格，空出紫色的小窝；绿色下方的墙挡住多余推动。",
+      "再把粉色向下送回家。紫色的小窝现在完全空出来了。",
+      "从紫色下方吹，让它向上回家，并腾出绿色右边的终点。",
+      "最后送绿色向右回家。前两位不在这条气浪的作用线上。"
+    ],
+    "hintStepsEn": [
+      "Move Violet right temporarily, freeing Mint’s downward landing.",
+      "Move Mint down temporarily, opening Pink’s source line.",
+      "Move Pink right, clearing Violet’s home. The wall below Mint prevents an extra push.",
+      "Send Pink down home. Violet’s destination is now free.",
+      "Send Violet up home, freeing Mint’s destination to the right.",
+      "Send Mint right home; the others are outside this ray."
+    ],
+    "tip": "紫色的终点被粉色占着，绿色的终点又在紫色旁边。先留出一个临时停靠格，按让路关系逐段完成。",
+    "lesson": "紫色想往上，粉色要先让开",
+    "id": 12,
+    "chapter": 2,
+    "scoreKey": "balance-v1-12",
+    "hintMode": "progressive",
+    "difficulty": "space",
+    "clue": "紫色的终点被粉色占着，绿色的终点又在紫色旁边。先留出一个临时停靠格，按让路关系逐段完成。",
+    "clueEn": "Pink occupies Violet’s home, and Mint’s home is beside Violet. Use temporary space and resolve each blocker in turn.",
+    "par": 6
+  },
+  {
+    "title": "上一声，还没结束",
+    "subtitle": "欢迎来到回声章节",
+    "start": [
+      19
+    ],
+    "goals": [
+      22
+    ],
+    "walls": [],
+    "echo": true,
+    "tip": "先在朋友左边吹一下。下一回合，试着让新气浪和旧回声一起把它往右送。",
+    "lesson": "先播放本次金色气浪，再播放上一次位置的紫色回声。每个印记只回响一次。",
+    "id": 13,
+    "w": 6,
+    "h": 6,
+    "range": 3,
+    "par": 2,
+    "solution": [
+      18,
+      18
+    ],
+    "en": [
+      "The last puff comes back",
+      "Two phases, one extra step",
+      "First leave a mark on Pink’s left. The next turn has a new puff and an old echo.",
+      "New gold puff first; old violet mark second. Marks stay on the floor and echo once."
+    ],
+    "logic": "第一回合只有一次推动；第二回合会先吹新气浪，再重播上一次。粉色正好需要向右三格。",
+    "logicEn": "Turn one pushes once; turn two has a new puff then the old echo. Pink needs three steps right.",
+    "hintSteps": [
+      "先从左侧吹粉色向右一格，留下下一回合还能吹到它的印记。",
+      "再从同一个地方吹：金色先推一格，紫色旧回声随后再推一格，正好回家。"
+    ],
+    "hintStepsEn": [
+      "Move Pink right and leave a mark close enough to reach it again.",
+      "Puff from the same source: gold pushes once, then the old violet mark pushes once more."
+    ],
+    "chapter": 3,
+    "scoreKey": "balance-v1-13",
+    "hintMode": "progressive",
+    "difficulty": "echo",
+    "clue": "第一回合只有一次推动；第二回合会先吹新气浪，再重播上一次。粉色正好需要向右三格。",
+    "clueEn": "Turn one pushes once; turn two has a new puff then the old echo. Pink needs three steps right."
+  },
+  {
+    "id": 14,
+    "w": 6,
+    "h": 6,
+    "range": 3,
+    "title": "两声，各有分工",
+    "subtitle": "新气浪照顾绿色，旧回声继续送粉色",
+    "start": [
+      14,
+      20
+    ],
+    "goals": [
+      16,
+      26
+    ],
+    "walls": [],
+    "echo": true,
+    "solution": [
+      13,
+      8
+    ],
+    "logic": "粉色要向右两格，绿色只要向下一格。第一声先送粉色，第二声用新气浪和旧回声分工。",
+    "logicEn": "Pink needs two steps right and Mint one step down. Start Pink first, then split the work between the new puff and echo.",
+    "hintSteps": [
+      "先把粉色向右送一格，并在左侧留下回声印记。",
+      "新气浪把绿色向下送回家；旧印记随后把粉色再向右送一格。"
+    ],
+    "hintStepsEn": [
+      "Move Pink right once and leave a useful mark to its left.",
+      "The new puff sends Mint down home. The previous mark then sends Pink right once more."
+    ],
+    "en": [
+      "Two puffs, two little jobs",
+      "The new puff helps Mint; the echo helps Pink",
+      "Pink needs two rightward steps. Mint needs one downward step. Let the two phases split the work.",
+      "A turn can finish two different routes when the new puff and old echo each have a job."
+    ],
+    "tip": "粉色要向右两格，绿色只要向下一格。第一声先送粉色，第二声用新气浪和旧回声分工。",
+    "lesson": "新气浪照顾绿色，旧回声继续送粉色",
+    "chapter": 3,
+    "scoreKey": "balance-v1-14",
+    "par": 2,
+    "hintMode": "progressive",
+    "difficulty": "echo",
+    "clue": "粉色要向右两格，绿色只要向下一格。第一声先送粉色，第二声用新气浪和旧回声分工。",
+    "clueEn": "Pink needs two steps right and Mint one step down. Start Pink first, then split the work between the new puff and echo."
+  },
+  {
+    "title": "接住上一声",
+    "subtitle": "这一声负责摆好位置",
+    "start": [
+      15,
+      21
+    ],
+    "goals": [
+      10,
+      26
+    ],
+    "walls": [],
+    "echo": true,
+    "tip": "先在第 3 行、第 3 列留下印记，再看看右下方的一口气能做什么。",
+    "lesson": "新的气浪能先把朋友送进旧印记的作用线上，旧回声再接力推动它。",
+    "id": 15,
+    "w": 6,
+    "h": 6,
+    "range": 3,
+    "par": 2,
+    "solution": [
+      14,
+      22
+    ],
+    "en": [
+      "Catch the echo",
+      "New puff sets up, old echo finishes",
+      "Mint needs to enter the old mark’s column before that mark echoes.",
+      "Predict the new position first. The echo uses that new position, not the old one."
+    ],
+    "logic": "绿色需要先向左，再向下。让新气浪负责转弯前的一步，旧印记负责转弯后的一步。",
+    "logicEn": "Mint needs to move left, then down. The new puff sets it up; the old mark completes the turn.",
+    "hintSteps": [
+      "从两位左侧的交点吹粉色向右，同时留下绿色转弯后会用到的印记。",
+      "从右下交点吹：粉色向上到家、绿色向左。随后旧印记把绿色向下送回家。"
+    ],
+    "hintStepsEn": [
+      "Move Pink right and leave the mark that Mint will use after its turn.",
+      "From the lower-right intersection, send Pink up and Mint left. The old mark then sends Mint down home."
+    ],
+    "chapter": 3,
+    "scoreKey": "balance-v1-15",
+    "hintMode": "progressive",
+    "difficulty": "echo",
+    "clue": "绿色需要先向左，再向下。让新气浪负责转弯前的一步，旧印记负责转弯后的一步。",
+    "clueEn": "Mint needs to move left, then down. The new puff sets it up; the old mark completes the turn."
+  },
+  {
+    "id": 16,
+    "w": 6,
+    "h": 6,
+    "range": 3,
+    "title": "一回合，两个拐弯",
+    "subtitle": "先留印记，再把两位送入它的作用线",
+    "start": [
+      20,
+      15
+    ],
+    "goals": [
+      25,
+      10
+    ],
+    "walls": [],
+    "echo": true,
+    "solution": [
+      7,
+      21
+    ],
+    "logic": "两位都要先拐一个弯。左上空格可以预留回声，右下的气浪再把两位同时送上回声的两条作用线。",
+    "logicEn": "Both friends need a turn in their routes. Seed the upper-left mark, then use the lower-right puff to feed its two rays.",
+    "hintSteps": [
+      "先在左上方留下印记。现在没人被推动，但下一回合这个位置会回响。",
+      "右下的新气浪把粉色向左、绿色向上摆好；左上的旧回声接着把粉色向下、绿色向右送进小窝。"
+    ],
+    "hintStepsEn": [
+      "Leave a mark at the upper-left intersection. Nobody moves yet, but this spot will echo next turn.",
+      "The lower-right puff moves Pink left and Mint up. The upper-left echo then sends Pink down and Mint right into their homes."
+    ],
+    "en": [
+      "Two little corners in one turn",
+      "Leave a mark, then feed both friends into it",
+      "Leave a mark at the upper-left intersection. The lower-right puff can feed both friends into its rays.",
+      "An empty first puff can prepare an echo that redirects two friends on the next turn."
+    ],
+    "tip": "两位都要先拐一个弯。左上空格可以预留回声，右下的气浪再把两位同时送上回声的两条作用线。",
+    "lesson": "先留印记，再把两位送入它的作用线",
+    "chapter": 3,
+    "scoreKey": "balance-v1-16",
+    "par": 2,
+    "hintMode": "progressive",
+    "difficulty": "echo",
+    "clue": "两位都要先拐一个弯。左上空格可以预留回声，右下的气浪再把两位同时送上回声的两条作用线。",
+    "clueEn": "Both friends need a turn in their routes. Seed the upper-left mark, then use the lower-right puff to feed its two rays."
+  },
+  {
+    "id": 17,
+    "w": 6,
+    "h": 6,
+    "range": 3,
+    "title": "墙能挡住两次风",
+    "subtitle": "留下够近的印记，让粉色连续向右",
+    "start": [
+      14,
+      19
+    ],
+    "goals": [
+      17,
+      19
+    ],
+    "walls": [
+      25
+    ],
+    "echo": true,
+    "solution": [
+      13,
+      12
+    ],
+    "logic": "粉色要向右三格。印记必须留得够近，第二回合才能再推到它；下方的墙始终护住绿色。",
+    "logicEn": "Pink needs three rightward steps. Keep the first mark close enough to reach again next turn; the wall shelters Mint throughout.",
+    "hintSteps": [
+      "在粉色左边相邻格吹气。这个印记足够近，下一回合仍能碰到粉色。绿色下方的墙阻止它移动。",
+      "新气浪把粉色从第 4 列推到第 5 列；旧印记还在三格范围内，再推一格到家。"
+    ],
+    "hintStepsEn": [
+      "Puff from directly left of Pink. This mark will still be close enough next turn. The wall beneath Mint stops it moving.",
+      "The new puff moves Pink to column 5. The old mark is still within three tiles, so its echo sends Pink one last step home."
+    ],
+    "en": [
+      "Sheltered from both puffs",
+      "Leave a close enough mark for Pink",
+      "Pink needs three rightward steps. Leave the first mark close enough to reach it again.",
+      "An echo has the same three-tile range and the same wall blocking as a new puff."
+    ],
+    "tip": "粉色要向右三格。印记必须留得够近，第二回合才能再推到它；下方的墙始终护住绿色。",
+    "lesson": "留下够近的印记，让粉色连续向右",
+    "chapter": 3,
+    "scoreKey": "balance-v1-17",
+    "par": 2,
+    "hintMode": "progressive",
+    "difficulty": "echo",
+    "clue": "粉色要向右三格。印记必须留得够近，第二回合才能再推到它；下方的墙始终护住绿色。",
+    "clueEn": "Pink needs three rightward steps. Keep the first mark close enough to reach again next turn; the wall shelters Mint throughout."
+  },
+  {
+    "id": 18,
+    "w": 6,
+    "h": 6,
+    "range": 3,
+    "title": "让回声停在门口",
+    "subtitle": "右侧的墙，接住多出来的一推",
+    "start": [
+      14,
+      20
+    ],
+    "goals": [
+      16,
+      26
+    ],
+    "walls": [
+      12,
+      17
+    ],
+    "echo": true,
+    "solution": [
+      13,
+      14
+    ],
+    "logic": "粉色到家后仍会被旧回声碰到。右侧的墙挡住多余的一推，所以可以放心把绿色同时送下去。",
+    "logicEn": "The old echo will still hit Pink after it reaches home. The right wall catches the extra push while Mint moves down.",
+    "hintSteps": [
+      "先把粉色向右送一格，在左边留下印记。",
+      "新气浪同时送粉色向右、绿色向下。粉色到家后，右墙会挡住旧回声多余的一推。"
+    ],
+    "hintStepsEn": [
+      "Move Pink right once and leave a mark on its left.",
+      "The new puff sends Pink right and Mint down home. The right wall stops the echo from pushing Pink one tile too far."
+    ],
+    "en": [
+      "Let the echo stop at the door",
+      "The right wall catches the extra push",
+      "The old echo will reach Pink after it arrives home. The wall on its right catches that extra push.",
+      "A blocked echo can protect a correct first-phase landing."
+    ],
+    "tip": "粉色到家后仍会被旧回声碰到。右侧的墙挡住多余的一推，所以可以放心把绿色同时送下去。",
+    "lesson": "右侧的墙，接住多出来的一推",
+    "chapter": 3,
+    "scoreKey": "balance-v1-18",
+    "par": 2,
+    "allowSilentEcho": true,
+    "hintMode": "progressive",
+    "difficulty": "echo",
+    "clue": "粉色到家后仍会被旧回声碰到。右侧的墙挡住多余的一推，所以可以放心把绿色同时送下去。",
+    "clueEn": "The old echo will still hit Pink after it reaches home. The right wall catches the extra push while Mint moves down."
+  },
+  {
+    "id": 19,
+    "w": 6,
+    "h": 6,
+    "range": 3,
+    "title": "旧小院，两次挡风",
+    "subtitle": "熟悉的让路顺序，还要保护两次回声",
+    "start": [
+      14,
+      13,
+      19
+    ],
+    "goals": [
+      15,
+      19,
+      20
+    ],
+    "walls": [
+      12,
+      25
+    ],
+    "echo": true,
+    "solution": [
+      18,
+      7,
+      13
+    ],
+    "logic": "这是第 10 关的小院，顺序仍是紫、绿、粉。但旧回声也会到达，必须让紫色和墙分别挡住它。",
+    "logicEn": "This is level 10’s yard. Keep the Violet–Mint–Pink order, but use Violet and the wall to block the returning echoes.",
+    "hintSteps": [
+      "紫色先向右让路，留下这一声的印记。",
+      "绿色向下归位。随后旧回声从左侧碰到绿色，但紫色挡住它的落点，绿色不会离开小窝。",
+      "最后送粉色向右。新气浪和旧回声都想把绿色向下推，但绿色下方的墙会挡住两次。"
+    ],
+    "hintStepsEn": [
+      "Move Violet right first and leave this puff’s mark.",
+      "Move Mint down home. The old echo reaches Mint from the left, but Violet occupies its landing tile and stops it moving.",
+      "Send Pink right. Both phases try to move Mint down, but the wall underneath stops both pushes."
+    ],
+    "en": [
+      "The old yard, two windbreaks",
+      "Keep the passing order and shelter both echoes",
+      "Revisit level 10 with echoes. Violet and the wall must now protect Mint from the old puffs too.",
+      "An echo need not move anyone to matter: deliberately blocking it can preserve the solution."
+    ],
+    "tip": "这是第 10 关的小院，顺序仍是紫、绿、粉。但旧回声也会到达，必须让紫色和墙分别挡住它。",
+    "lesson": "熟悉的让路顺序，还要保护两次回声",
+    "chapter": 4,
+    "scoreKey": "balance-v1-19",
+    "par": 3,
+    "allowSilentEcho": true,
+    "hintMode": "progressive",
+    "difficulty": "plan",
+    "clue": "这是第 10 关的小院，顺序仍是紫、绿、粉。但旧回声也会到达，必须让紫色和墙分别挡住它。",
+    "clueEn": "This is level 10’s yard. Keep the Violet–Mint–Pink order, but use Violet and the wall to block the returning echoes."
+  },
+  {
+    "id": 20,
+    "w": 6,
+    "h": 6,
+    "range": 3,
+    "title": "先清出回声的落点",
+    "subtitle": "紫色先让路，再让回声送绿色",
+    "start": [
+      15,
+      21,
+      26
+    ],
+    "goals": [
+      10,
+      26,
+      28
+    ],
+    "walls": [
+      34
+    ],
+    "echo": true,
+    "solution": [
+      25,
+      14,
+      22
+    ],
+    "logic": "绿色最后要落在紫色现在的位置。先让紫色向右离开，再安排绿色进入旧印记的作用线。",
+    "logicEn": "Violet occupies Mint’s eventual landing tile. Move Violet right first, then place Mint in the old mark’s path.",
+    "hintSteps": [
+      "先把紫色向右挪开，为绿色腾出最终落点。",
+      "新气浪把粉色向右送一格；上一声回响把紫色继续送到右侧小窝。",
+      "新气浪把粉色向上送回家、绿色向左送进旧印记的作用线；旧回声再把绿色向下送回家。紫色由底墙保护。"
+    ],
+    "hintStepsEn": [
+      "Move Violet right, freeing Mint’s final landing tile.",
+      "The new puff moves Pink right; the last echo continues Violet right into its home.",
+      "The new puff sends Pink up home and Mint left into the old ray. The echo sends Mint down home. The bottom wall protects Violet."
+    ],
+    "en": [
+      "Clear the echo’s landing first",
+      "Violet makes room for Mint’s final landing",
+      "Mint’s final landing is currently occupied by Violet. Move Violet aside before setting up the echo.",
+      "An echo needs a free landing tile just like a new puff. Clear that space before the relay."
+    ],
+    "tip": "绿色最后要落在紫色现在的位置。先让紫色向右离开，再安排绿色进入旧印记的作用线。",
+    "lesson": "紫色先让路，再让回声送绿色",
+    "chapter": 4,
+    "scoreKey": "balance-v1-20",
+    "par": 3,
+    "hintMode": "progressive",
+    "difficulty": "plan",
+    "clue": "绿色最后要落在紫色现在的位置。先让紫色向右离开，再安排绿色进入旧印记的作用线。",
+    "clueEn": "Violet occupies Mint’s eventual landing tile. Move Violet right first, then place Mint in the old mark’s path."
+  },
+  {
+    "id": 21,
+    "w": 6,
+    "h": 6,
+    "range": 3,
+    "title": "三位，各有任务",
+    "subtitle": "紫色既让出印记，也接住回声",
+    "start": [
+      20,
+      15,
+      7
+    ],
+    "goals": [
+      25,
+      9,
+      10
+    ],
+    "walls": [],
+    "echo": true,
+    "solution": [
+      6,
+      7,
+      21
+    ],
+    "logic": "先让紫色腾出左上印记位，再把它送到右侧当挡风板。最后一回合，粉色靠回声转弯，绿色靠紫色停稳。",
+    "logicEn": "First free the upper-left mark, then send Violet right to act as a landing blocker. Pink turns with the echo, while Mint settles against Violet.",
+    "hintSteps": [
+      "先把紫色向右挪一格，腾出它原来的左上交点。",
+      "从刚腾出的交点再吹紫色；上一声回响会继续送它向右，使它在绿色终点后方站稳。",
+      "右下的新气浪把粉色向左、绿色向上。旧回声再送粉色向下到家；紫色挡住绿色后面的落点，让绿色也停在家里。"
+    ],
+    "hintStepsEn": [
+      "Move Violet right once, freeing the upper-left intersection it occupied.",
+      "Puff from that newly freed intersection. The previous echo moves Violet farther right, behind Mint’s final home.",
+      "The lower-right puff moves Pink left and Mint up. The old echo sends Pink down home; Violet blocks Mint’s extra push so Mint stays home too."
+    ],
+    "en": [
+      "Three friends, three little jobs",
+      "Violet frees the mark and catches the echo",
+      "Move Violet out of the upper-left mark, then position it as a windbreak. Pink will turn with the echo; Mint will stop against Violet.",
+      "A complete plan accounts for sources, routes, landing tiles and the echo’s final extra push."
+    ],
+    "tip": "先让紫色腾出左上印记位，再把它送到右侧当挡风板。最后一回合，粉色靠回声转弯，绿色靠紫色停稳。",
+    "lesson": "紫色既让出印记，也接住回声",
+    "chapter": 4,
+    "scoreKey": "balance-v1-21",
+    "par": 3,
+    "hintMode": "progressive",
+    "difficulty": "plan",
+    "clue": "先让紫色腾出左上印记位，再把它送到右侧当挡风板。最后一回合，粉色靠回声转弯，绿色靠紫色停稳。",
+    "clueEn": "First free the upper-left mark, then send Violet right to act as a landing blocker. Pink turns with the echo, while Mint settles against Violet."
+  },
+  {
+    "w": 6,
+    "h": 6,
+    "range": 3,
+    "echo": true,
+    "title": "回声之后，还留一格",
+    "subtitle": "前两位先停稳，粉色再走最后一段",
+    "start": [
+      20,
+      15,
+      7
+    ],
+    "goals": [
+      31,
+      9,
+      10
+    ],
+    "walls": [
+      3
+    ],
+    "solution": [
+      6,
+      7,
+      21,
+      13
+    ],
+    "logic": "紫色要站在绿色右边，接住多出来的回声。上方的墙又能护住绿色，让粉色最后继续向下。",
+    "logicEn": "Violet must stop behind Mint to catch an extra echo. The upper wall later protects Mint while Pink finishes downward.",
+    "en": [
+      "One more space after the echo",
+      "Settle the blockers before Pink’s final step",
+      "Violet catches Mint’s extra push; the wall above Mint protects it on the last turn.",
+      "Each finished friend needs protection from the echo that follows."
+    ],
+    "hintSteps": [
+      "先让紫色向右，腾出左上交点，准备给粉色的转弯留下印记。",
+      "从空出的交点再次送紫色向右；旧回声再送一格，让它停在绿色终点后面。",
+      "右下的新气浪把粉色向左、绿色向上；旧回声把粉色向下，紫色则接住绿色多余的一推。",
+      "粉色还要向下走一格。新气浪送它回家，旧印记虽然会向上吹绿色，但上方的墙会护住它。"
+    ],
+    "hintStepsEn": [
+      "Move Violet right, freeing the upper-left intersection.",
+      "Puff from that freed intersection. The old echo moves Violet one extra step behind Mint’s home.",
+      "The lower-right puff moves Pink left and Mint up. The echo turns Pink downward; Violet catches Mint’s extra push.",
+      "Send Pink one final step down. The old mark also reaches Mint, but the upper wall keeps Mint home."
+    ],
+    "tip": "紫色要站在绿色右边，接住多出来的回声。上方的墙又能护住绿色，让粉色最后继续向下。",
+    "lesson": "前两位先停稳，粉色再走最后一段",
+    "id": 22,
+    "chapter": 4,
+    "scoreKey": "balance-v1-22",
+    "hintMode": "progressive",
+    "difficulty": "plan",
+    "clue": "紫色要站在绿色右边，接住多出来的回声。上方的墙又能护住绿色，让粉色最后继续向下。",
+    "clueEn": "Violet must stop behind Mint to catch an extra echo. The upper wall later protects Mint while Pink finishes downward.",
+    "par": 4
+  },
+  {
+    "w": 6,
+    "h": 6,
+    "range": 3,
+    "echo": true,
+    "title": "先让位，再接住回声",
+    "subtitle": "粉色借到上面，另外两位才能通过",
+    "start": [
+      14,
+      13,
+      19
+    ],
+    "goals": [
+      21,
+      20,
+      14
+    ],
+    "walls": [
+      12,
+      25
+    ],
+    "solution": [
+      26,
+      18,
+      7,
+      3,
+      0
+    ],
+    "logic": "粉色占着紫色向上转弯的落点，绿色又挡着中间的路。先借上方的空位，再让两次气浪分别完成转弯和让路。",
+    "logicEn": "Pink occupies Violet’s upward landing; Mint blocks the middle route. Borrow the upper space, then split turning and clearance between the two phases.",
+    "en": [
+      "Make room for the echo",
+      "Pink parks above so both friends can pass",
+      "Pink occupies Violet’s upward landing, while Mint blocks the middle. Borrow the upper space first.",
+      "A temporary detour has a specific job: clear a landing, then preserve the route back."
+    ],
+    "hintSteps": [
+      "粉色先向上借一格，空出中间的紫色转弯格。留在下方的印记，下一回合会接住紫色。",
+      "新气浪把紫色向右送一格；刚才的旧印记随后把紫色向上，送进空出来的中间格。",
+      "从左上交点吹：粉色向右、绿色向下；旧回声再送绿色向右到家。两次气浪分工，把通道让出来。",
+      "从粉色上方吹，让粉色向下走一格。旧回声不会碰到已经停好的另外两位。",
+      "这次选不会碰到朋友的左上角，让旧印记单独把粉色再送下一格回家。这一声是在等回声完成路线。"
+    ],
+    "hintStepsEn": [
+      "Park Pink one step up to free Violet’s upward landing. This lower mark will catch Violet next turn.",
+      "The new puff sends Violet right; the previous lower mark sends Violet up into the cleared middle tile.",
+      "The upper-left puff sends Pink right and Mint down. The old echo sends Mint right home, clearing the passage.",
+      "Puff from above Pink to move it down once. The old mark misses the two settled friends.",
+      "Choose the harmless upper-left corner, letting the old mark send Pink down home. This turn waits for the useful echo."
+    ],
+    "tip": "粉色占着紫色向上转弯的落点，绿色又挡着中间的路。先借上方的空位，再让两次气浪分别完成转弯和让路。",
+    "lesson": "粉色借到上面，另外两位才能通过",
+    "id": 23,
+    "chapter": 4,
+    "scoreKey": "balance-v1-23",
+    "hintMode": "progressive",
+    "difficulty": "plan",
+    "clue": "粉色占着紫色向上转弯的落点，绿色又挡着中间的路。先借上方的空位，再让两次气浪分别完成转弯和让路。",
+    "clueEn": "Pink occupies Violet’s upward landing; Mint blocks the middle route. Borrow the upper space, then split turning and clearance between the two phases.",
+    "par": 5
+  },
+  {
+    "w": 6,
+    "h": 6,
+    "range": 3,
+    "echo": true,
+    "title": "把借来的位置还回去",
+    "subtitle": "临时停靠之后，用交点一起归位",
+    "start": [
+      14,
+      13,
+      19
+    ],
+    "goals": [
+      27,
+      20,
+      13
+    ],
+    "walls": [
+      12,
+      25
+    ],
+    "solution": [
+      26,
+      18,
+      7,
+      3,
+      0,
+      15
+    ],
+    "logic": "粉色占着紫色向上转弯的落点，绿色又挡着中间的路。先借上方的空位，再让两次气浪分别完成转弯和让路。",
+    "logicEn": "Pink occupies Violet’s upward landing; Mint blocks the middle route. Borrow the upper space, then split turning and clearance between the two phases.",
+    "en": [
+      "Return the borrowed space",
+      "Finish the temporary detour at one intersection",
+      "Pink occupies Violet’s upward landing, while Mint blocks the middle. Borrow the upper space first.",
+      "A temporary detour has a specific job: clear a landing, then preserve the route back."
+    ],
+    "hintSteps": [
+      "粉色先向上借一格，空出中间的紫色转弯格。留在下方的印记，下一回合会接住紫色。",
+      "新气浪把紫色向右送一格；刚才的旧印记随后把紫色向上，送进空出来的中间格。",
+      "从左上交点吹：粉色向右、绿色向下；旧回声再送绿色向右到家。两次气浪分工，把通道让出来。",
+      "从粉色上方吹，让粉色向下走一格。旧回声不会碰到已经停好的另外两位。",
+      "这次选不会碰到朋友的左上角，让旧印记单独把粉色再送下一格。它会来到最后一个共同施力点的下面。",
+      "最后从粉色上方、紫色右边的共同交点吹：粉色向下、紫色向左，同时归位，绿色不会被碰到。"
+    ],
+    "hintStepsEn": [
+      "Park Pink one step up to free Violet’s upward landing. This lower mark will catch Violet next turn.",
+      "The new puff sends Violet right; the previous lower mark sends Violet up into the cleared middle tile.",
+      "The upper-left puff sends Pink right and Mint down. The old echo sends Mint right home, clearing the passage.",
+      "Puff from above Pink to move it down once. The old mark misses the two settled friends.",
+      "Choose the harmless upper-left corner, letting the old mark send Pink down below the final shared source.",
+      "Puff at the intersection above Pink and right of Violet. Pink goes down and Violet left, while Mint stays home."
+    ],
+    "tip": "粉色占着紫色向上转弯的落点，绿色又挡着中间的路。先借上方的空位，再让两次气浪分别完成转弯和让路。",
+    "lesson": "临时停靠之后，用交点一起归位",
+    "id": 24,
+    "chapter": 4,
+    "scoreKey": "balance-v1-24",
+    "hintMode": "progressive",
+    "difficulty": "plan",
+    "clue": "粉色占着紫色向上转弯的落点，绿色又挡着中间的路。先借上方的空位，再让两次气浪分别完成转弯和让路。",
+    "clueEn": "Pink occupies Violet’s upward landing; Mint blocks the middle route. Borrow the upper space, then split turning and clearance between the two phases.",
+    "par": 6
+  }
+];
+if(typeof module!=='undefined'&&module.exports)module.exports=levels;else root.PoofLevels=levels;
+})(typeof globalThis==='undefined'?this:globalThis);
+</script>
+<script>(() => {
+  'use strict';
+  const E = window.PoofEngine, levels = window.PoofLevels, $ = id => document.getElementById(id);
+  const chapters = [{start:0,end:6},{start:6,end:12},{start:12,end:18},{start:18,end:24}];
+  const chapterOf = i => chapters.findIndex(c => i >= c.start && i < c.end);
+  let chapterPage = 0;
+  const colors = ['#edb2bf', '#a2d6c2', '#b9a9e0'], symbols = ['▲', '●', '✦'];
+  let lang = 'zh', sound = true, best = {}, levelIndex = 0, state, visual, history = [];
+  let selected = null, hintCell = null, busy = false, hinting = false, won = false, revision = 0, audio = null, hintTier = 0;
+  let previewPhase = 'all', lastResult = null;
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const touch = () => matchMedia('(hover: none)').matches;
+  const delay = ms => new Promise(resolve => setTimeout(resolve, reduced ? 12 : ms));
+  try { best = JSON.parse(localStorage.getItem('poof-v2-best') || '{}'); if (!best || typeof best !== 'object') best = {}; lang = localStorage.getItem('poof-v2-lang') === 'en' ? 'en' : 'zh'; sound = localStorage.getItem('poof-v2-sound') !== 'off'; } catch { /* Offline/private play works without storage. */ }
+  const text = {
+    zh: {
+      edition: '一声气浪，一点小聪明。', help: '怎么玩', headline: '点一下，<em>大家都动起来。</em>', subhead: '不碰小伙伴，用一圈气浪把它们送回家。', heroNote: '轻轻一吹，刚刚好。', moves: '次气浪', phaseOne: '这次气浪', home: '朋友到家', select: '选一块空地', selectDetail: '悬停预览 · 点击释放', mission: '这一关的推理', journey: '关卡地图', chapterNames: ['小小气浪', '回声接力', '小巷协作', '回声挑战'], chapterTabs: ['入门', '回声', '小巷', '挑战'], basic: '01 — 04 · 先学会吹', echoChapter: '05 — 08 · 回声来接力', undo: '撤销', restart: '重来', predictionTitle: '这一声会怎样', hint: '提示', gold: '金色：本次推动', violet: '紫色：上次回声', footer: '没有倒计时。慢慢想，随时退一步。', replay: '再来一次，吹得更漂亮', helpTitle: '你不动它，气浪来动。', helpOne: '选一块空地。气浪向四个方向传播，最多三格远，推遇到的第一位朋友一格。', helpTwo: '墙和朋友都会挡风。只有所有朋友在同色、同图案的小窝里，才算过关。', helpThree: '回声关卡中：先吹这次的气浪，再从上一次的位置补一声回声。印记固定在地面，正中央的朋友不会被这一声推动。', letsPlay: '明白啦，吹一下！', basicChapter: 'CHAPTER 01 · 小小气浪', echoTitle: 'CHAPTER 02 · 回声接力', echoSleep: '回声还在睡觉', echoFirst: '先留下第一个印记', echoReady: '上一次的回声', par: n => `${n} 声拿满星`, selected: (r, c) => `第 ${r} 行 · 第 ${c} 列`, release: '点这里释放，或按空格键', touchDetail: '点空地预览 · 按 POOF! 释放', invalid: '这里只能看，不能点。选一块没有墙、没有朋友的空地。', thinking: '让我看看，哪一声最合适……', hint: '提示', hintAt: (r, c) => `试试第 ${r} 行、第 ${c} 列。落点已画出来，按 POOF! 就能释放。`, noHint: '暂时没找到接下来的路线。可以撤销一步，或者重来换个思路。', undoStatus: '退回上一声，连回声印记也一起恢复。', phaseFirst: '① 这次气浪先出发……', phaseSecond: '② 上一次的印记，补上一声回响。', after: '金色先动，紫色后动。两次都结束，才是最后的落点。', plainAfter: '位置刚刚好？继续选一块空地，送大家一起回家。', noMove: '这声没有推动朋友。试着在它的同一行或同一列吹气。', noMoveEcho: '这一声没有推动朋友，但会为下一回合留下一个新印记。', next: '下一声，继续冒险 →', finish: '全部关卡，完美完成！', win: '大家都到家啦！', winDetail: n => `用了 ${n} 声气浪，刚刚好聚在一起。`, again: '从第一关再吹一遍 ↻', homeNames: ['粉色三角朋友', '绿色圆点朋友', '紫色星星朋友'], cell: (r, c, kind) => `第${r}行第${c}列，${kind}`, empty: '空地', wall: '墙', nest: '小窝', previewFirst: '先看①，再看②', previewOne: '箭头就是这次的落点', none: '这里暂时吹不到朋友', soundOn: '关闭音效', soundOff: '开启音效'
+    },
+    en: {
+      edition: 'A little puff. A clever little plan.', help: 'How to play', headline: 'One little puff.<br><em>Everyone moves.</em>', subhead: 'Touch the empty space. Let the air bring your friends home.', heroNote: 'A little puff goes a long way.', moves: 'PUFFS', phaseOne: 'Your new puff', home: 'Friends home', select: 'Pick an empty tile', selectDetail: 'Hover to preview · Click to puff', mission: 'THE LOGIC OF THIS LEVEL', journey: 'YOUR LITTLE ADVENTURES', chapterNames: ['A LITTLE PUFF', 'THE ECHO', 'WINDING ALLEYS', 'ECHO CHALLENGES'], chapterTabs: ['START', 'ECHO', 'ALLEYS', 'CHALLENGE'], basic: '01 — 04 · A gentle start', echoChapter: '05 — 08 · Here comes the echo', undo: 'Undo', restart: 'Reset', predictionTitle: 'WHAT THIS PUFF DOES', hint: 'Hint', gold: 'Gold: your new puff', violet: 'Violet: the last echo', footer: 'No timer. Take your time. Undo whenever you like.', replay: 'Try for a prettier little plan', helpTitle: 'You never move them. The air does.', helpOne: 'Choose an empty tile. Air travels up to three tiles in four directions, moving the first friend it meets one tile farther away.', helpTwo: 'Walls and friends block the air. Match every friend to the home with its color and symbol.', helpThree: 'In echo levels: your new puff moves first; your previous mark echoes next. Marks stay on the floor. A friend standing right on a mark stays put during that puff.', letsPlay: 'Got it. Let’s POOF!', basicChapter: 'CHAPTER 01 · A LITTLE PUFF', echoTitle: 'CHAPTER 02 · THE ECHO', echoSleep: 'The echo is asleep', echoFirst: 'Leave your first mark', echoReady: 'Your previous echo', par: n => `${n} puffs for 3 stars`, selected: (r, c) => `ROW ${r} · COLUMN ${c}`, release: 'Click POOF! or press Space', touchDetail: 'Tap to preview · Press POOF! to release', invalid: 'Choose an empty tile without a wall or a friend.', thinking: 'Thinking of a clever little puff…', hintAt: (r, c) => `Try row ${r}, column ${c}. Your landing spots are ready. Press POOF!`, noHint: 'No route found yet. Try undoing a puff, or reset for a fresh start.', undoStatus: 'One puff back. Your previous echo mark is restored, too.', phaseFirst: '① Your new puff moves first…', phaseSecond: '② Your old mark sends its echo.', after: 'Gold first. Violet second. Only the final landing counts.', plainAfter: 'Looking good? Pick another empty tile to bring everyone home.', noMove: 'That puff missed. Try a tile in the same row or column as a friend.', noMoveEcho: 'Nobody moved, but you left a new mark for the next echo.', next: 'On to the next little puff →', finish: 'All adventures. Everyone home!', win: 'Everyone is home!', winDetail: n => `Together at last, in ${n} little puffs.`, again: 'One more adventure from the start ↻', homeNames: ['Pink triangle friend', 'Mint circle friend', 'Violet star friend'], cell: (r, c, kind) => `Row ${r}, column ${c}, ${kind}`, empty: 'empty', wall: 'wall', nest: 'home', previewFirst: 'First ①, then ②', previewOne: 'Arrows show your landing spots', none: 'No friends within this puff', soundOn: 'Turn sound off', soundOff: 'Turn sound on'
+    }
+  };
+  const english = [
+    ['A gentle little puff', 'Bring your first friend home', 'Want a friend to move right? Blow from the left.', 'Click an empty tile. Air travels in four directions, moving the first friend it meets one tile away.'],
+    ['One puff, two happy friends', 'Find their perfect intersection', 'Find the empty tile below Pink and to the left of Mint.', 'One puff can move friends in all four directions. The right intersection can do a lot.'],
+    ['Excuse me, coming through', 'Make a little room', 'Mint is blocking the way. Send Mint home first, then bring Pink over.', 'Friends block the air, and cannot move into another friend. Even a friend at home can be blown away.'],
+    ['A wall can be a friend', 'Keep one friend safe', 'Violet is already home. Use the wall to protect them while helping the others.', 'Walls stop the air. A little shelter lets you move only the friends you mean to.'],
+    ['That puff is not quite over', 'Say hello to your echo', 'Start with a puff from the left. Your next puff and the old echo can work together.', 'Your golden puff moves first. Your previous violet mark echoes next. Each mark echoes only once.'],
+    ['Catch the last little puff', 'Set up a lovely little relay', 'Leave your first mark at row 3, column 3. Then look just below and right.', 'Your new puff can move a friend into the old mark’s path. The echo takes it from there.'],
+    ['A mischievous little echo', 'Only the last landing counts', 'Watch both colors. Everyone must still be home after the violet echo.', '① marks the first landing. ② marks the final landing after the echo. Preview both before you puff.'],
+    ['One perfectly timed plan', 'A lovely finish for everyone', 'Use the walls as windbreaks. Leave a useful echo for your next turn.', 'No new rules. Just intersections, shelter, and a clever little echo. Bring everyone home.']
+  ];
+  const T = () => text[lang];
+  Object.assign(text.zh,{edition:'回声版 · 直接点格子',chapterNames:['交点与挡风','让路与借位','认识回声','回声协作'],chapterTabs:['交点','借位','回声','协作'],selectDetail:'悬停预览 · 点空格直接吹气',touchDetail:'点空格直接吹气 · Z 可撤销',par:n=>`三星参考 ${n} 声 · 不限步数`,plainAfter:'这一声结束了。观察空出来的位置，再选下一声。'});
+  Object.assign(text.en,{edition:'Echo edition · Click to puff',chapterNames:['INTERSECTIONS','MAKING SPACE','MEET THE ECHO','WORK TOGETHER'],chapterTabs:['PUFF','SPACE','ECHO','TEAM'],selectDetail:'Hover to preview · Click a tile to puff',touchDetail:'Tap a tile to puff · Undo any time',par:n=>`${n} puffs for 3 stars · No move limit`,plainAfter:'That puff has settled. Look at the space it opened before the next one.'});
+  const metaFor = i => lang === 'en' ? (levels[i].en || english[i]) : [levels[i].title, levels[i].subtitle, levels[i].tip, levels[i].lesson];
+  const meta = () => metaFor(levelIndex);
+  const scoreKey = i => levels[i].scoreKey || String(i);
+  const scoreAt = i => best[scoreKey(i)];
+  const status = (message, error = false) => { $('status').textContent = message; $('status').classList.toggle('error', error); };
+  function paintHintLabel(){const label=$('hint').querySelector('[data-i="hint"]');if(label)label.textContent=levels[levelIndex].hintMode==='progressive'?(lang==='zh'?(hintTier?'下一步':'思路'):(hintTier?'Next step':'Clue')):T().hint;}
+  function persist() { try { localStorage.setItem('poof-v2-best', JSON.stringify(best)); localStorage.setItem('poof-v2-lang', lang); localStorage.setItem('poof-v2-sound', sound ? 'on' : 'off'); } catch { /* Optional. */ } }
+  function playSound(kind) {
+    if (!sound) return;
+    try {
+      audio ||= new (window.AudioContext || window.webkitAudioContext)();
+      if (audio.state === 'suspended') audio.resume();
+      if (kind === 'win') {
+        [523, 659, 784, 1047].forEach((freq, i) => { const o = audio.createOscillator(), g = audio.createGain(), t = audio.currentTime + i * .1; o.type = 'sine'; o.frequency.value = freq; g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(.045, t + .01); g.gain.exponentialRampToValueAtTime(.001, t + .25); o.connect(g); g.connect(audio.destination); o.start(t); o.stop(t + .26); });
+      } else {
+        const length = Math.floor(audio.sampleRate * .18), buffer = audio.createBuffer(1, length, audio.sampleRate), data = buffer.getChannelData(0);
+        for (let i = 0; i < length; i++) data[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / length, 2);
+        const source = audio.createBufferSource(), filter = audio.createBiquadFilter(), gain = audio.createGain();
+        source.buffer = buffer; filter.type = 'lowpass'; filter.frequency.value = kind === 'echo' ? 950 : 550; gain.gain.value = .22;
+        source.connect(filter); filter.connect(gain); gain.connect(audio.destination); source.start();
+      }
+    } catch { /* Sound is optional. */ }
+  }
+  function applyLanguage() {
+    document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+    document.querySelectorAll('[data-i]').forEach(el => { el.innerHTML = T()[el.dataset.i]; });
+    $('language').textContent = lang === 'zh' ? 'EN' : '中文';
+    $('language').setAttribute('aria-label', lang === 'zh' ? 'Switch to English' : '切换到中文');
+    $('sound').classList.toggle('off', !sound); $('sound').setAttribute('aria-label', sound ? T().soundOn : T().soundOff); $('sound').setAttribute('aria-pressed', String(sound));
+    $('chapter').textContent = 'CHAPTER ' + String(chapterOf(levelIndex) + 1).padStart(2, '0') + ' · ' + T().chapterNames[chapterOf(levelIndex)];
+    $('level-title').textContent = meta()[0]; $('mission-title').textContent = meta()[1]; $('tip').textContent = meta()[2]; $('lesson').textContent = meta()[3];
+    $('par').textContent = T().par(levels[levelIndex].par);
+    $('preview-tabs').querySelectorAll('button').forEach(b=>b.textContent=lang==='zh'?({all:'全部预览',first:'只看 ①',second:'只看 ②'})[b.dataset.preview]:({all:'Both phases',first:'Only ①',second:'Only ②'})[b.dataset.preview]);
+    if (touch()) $('selection-detail').textContent = T().touchDetail;
+    renderNav(); paint(); if (!busy) renderPreview(); if (won) paintWin();
+  }
+  function renderNav() {
+    const chapter = chapters[chapterPage];
+    $('chapter-tabs').innerHTML = chapters.map((c, i) => '<button type="button" data-chapter="' + i + '" class="chapter-tab ' + (i === chapterPage ? 'active' : '') + '" aria-label="' + (lang === 'zh' ? '第' + (i + 1) + '章：' : 'Chapter ' + (i + 1) + ': ') + T().chapterNames[i] + '" aria-pressed="' + (i === chapterPage) + '">' + T().chapterTabs[i] + '</button>').join('');
+    $('chapter-range').textContent = String(chapter.start + 1).padStart(2, '0') + ' — ' + String(chapter.end).padStart(2, '0') + ' · ' + T().chapterNames[chapterPage];
+    $('level-list').innerHTML = levels.slice(chapter.start, chapter.end).map((l, j) => {
+      const i = chapter.start + j, score = scoreAt(i);
+      return '<button class="level-btn ' + (l.echo ? 'echo ' : '') + (i === levelIndex ? 'active ' : '') + (score ? 'complete' : '') + '" data-level="' + i + '" ' + (i === levelIndex ? 'aria-current="step"' : '') + ' aria-label="' + (lang === 'zh' ? '第' + (i + 1) + '关：' : 'Level ' + (i + 1) + ': ') + metaFor(i)[0] + '">' + String(i + 1).padStart(2, '0') + '<small>' + (score ? '★'.repeat(score.stars) : l.par + (lang === 'zh' ? ' 声' : ' PUFFS')) + '</small></button>';
+    }).join('');
+    $('completion').textContent = levels.filter((l,i) => scoreAt(i)).length + ' / ' + levels.length;
+  }
+  function renderBoard() {
+    const level = levels[levelIndex];
+    $('board').innerHTML = Array.from({ length: 36 }, (_, p) => `<button type="button" class="cell" data-cell="${p}" data-testid="cell-${p}"></button>`).join('');
+    $('pieces').innerHTML = state.positions.map((_, i) => `<div class="piece" id="piece-${i}" style="--color:${colors[i]}"><div class="blob"><span class="badge">${symbols[i]}</span><i class="eye l"></i><i class="eye r"></i><i class="mouth"></i><i class="cheek l"></i><i class="cheek r"></i></div></div>`).join('');
+    $('goal-legend').innerHTML = level.goals.map((_, i) => `<div class="goal-pair" style="--color:${colors[i]}"><span class="goal-dot">${symbols[i]}</span><span>→</span><span class="goal-ring">${symbols[i]}</span></div>`).join('');
+  }
+  function paint() {
+    const level = levels[levelIndex], t = T();
+    $('board').querySelectorAll('[data-cell]').forEach(cell => {
+      const p = Number(cell.dataset.cell), goal = level.goals.indexOf(p), piece = visual.indexOf(p), wall = level.walls.includes(p);
+      cell.className = `cell${wall ? ' wall' : ''}${piece >= 0 ? ' occupied' : ''}${selected === p && !busy && !won ? ' selected' : ''}${level.echo && state.echo === p ? ' echo-mark' : ''}${hintCell === p ? ' hinted' : ''}`;
+      cell.innerHTML = `${goal >= 0 ? `<span class="goal ${visual[goal] === p ? 'done' : ''}" style="--color:${colors[goal]}">${symbols[goal]}</span>` : ''}${level.echo && state.echo === p ? '<span class="echo-symbol">↻</span>' : ''}${state.moves === 0 && level.focus === p && selected === null && !busy ? '<span class="tutorial-marker">✦</span>' : ''}`;
+      if(goal >= 0 && piece >= 0 && goal !== piece) cell.innerHTML += `<span class="home-tag" style="--color:${colors[goal]}">${symbols[goal]}</span>`;
+      const kind = wall ? t.wall : piece >= 0 ? t.homeNames[piece] + (goal >= 0 && goal !== piece ? ` / ${t.homeNames[goal]} ${t.nest}` : '') : goal >= 0 ? `${t.homeNames[goal]} ${t.nest}` : t.empty;
+      cell.setAttribute('aria-label', t.cell(Math.floor(p / 6) + 1, p % 6 + 1, kind));
+      cell.setAttribute('aria-disabled', String(wall || piece >= 0 || busy || won));
+      cell.setAttribute('aria-pressed', String(selected === p));
+    });
+    visual.forEach((p, i) => { const piece = $('piece-' + i); piece.style.setProperty('--x', p % 6); piece.style.setProperty('--y', Math.floor(p / 6)); piece.classList.toggle('home', p === level.goals[i]); });
+    $('moves').textContent = String(state.moves + (busy ? 1 : 0)).padStart(2, '0');
+    $('home-count').textContent = `${visual.filter((p, i) => p === level.goals[i]).length} / ${visual.length}`;
+    $('release').disabled = selected === null || busy || won;
+    $('undo').disabled = history.length === 0;
+    $('hint').disabled = busy || hinting || won;
+    paintHintLabel();
+    $('board-wrap').classList.toggle('wait', busy);
+    $('win').hidden = !won;
+    const echoReady = level.echo && state.echo !== null;
+    $('phase-two').classList.toggle('ready', echoReady);
+    const markName=selected===null&&!busy?(lang==='zh'?'下次回声':'Next echo'):(lang==='zh'?'旧印记':'Old mark');
+    $('echo-label').textContent = !level.echo ? (lang==='zh'?'本关没有回声':'No echo this level') : echoReady ? (lang==='zh'?`${markName} · ${Math.floor(state.echo/6)+1}行${state.echo%6+1}列`:`${markName} · R${Math.floor(state.echo/6)+1} C${state.echo%6+1}`) : t.echoFirst;
+    $('preview-tabs').hidden=!level.echo;
+    $('preview-tabs').querySelectorAll('button').forEach(b=>{b.classList.toggle('active',b.dataset.preview===previewPhase);b.setAttribute('aria-pressed',String(b.dataset.preview===previewPhase));b.disabled=busy||(b.dataset.preview==='second'&&!echoReady);});
+  }
+  function describePhase(data, before) {
+    if(!data) return '';
+    const level=levels[levelIndex], names=lang==='zh'?['粉色','绿色','紫色']:['Pink','Mint','Violet'];
+    if(!data.hits.length) return lang==='zh'?'没有朋友被推动。':'No friend is moved.';
+    return data.hits.map(h=>{
+      const name=names[h.piece], direction=lang==='zh'?(h.dx===1?'向右':h.dx===-1?'向左':h.dy===1?'向下':'向上'):(h.dx===1?'right':h.dx===-1?'left':h.dy===1?'down':'up');
+      if(!h.blocked) return lang==='zh'?name+direction+'一格':name+' moves one tile '+direction;
+      const [x,y]=E.xy(h.from,level),tx=x+h.dx,ty=y+h.dy,dest=ty*6+tx;
+      if(!E.inside(tx,ty,level)) return lang==='zh'?name+'被棋盘边界挡住，保持原位':name+' stays: the board edge blocks its landing';
+      if(level.walls.includes(dest)) return lang==='zh'?name+'被墙挡住，保持原位':name+' stays: a wall blocks its landing';
+      const other=names[before.indexOf(dest)]||'';
+      return lang==='zh'?name+'的落点被'+other+'占着，保持原位':name+' stays: '+other+' occupies its landing tile';
+    }).join(lang==='zh'?'；':'; ')+(lang==='zh'?'。':'.');
+  }
+  function edgeWarning(positions, already = false) {
+    const level=levels[levelIndex],names=lang==='zh'?['粉色','绿色','紫色']:['Pink','Mint','Violet'];
+    const lost=positions.map((p,i)=>{const[x,y]=E.xy(p,level),[gx,gy]=E.xy(level.goals[i],level);return (x===0&&gx!==0)||(x===5&&gx!==5)||(y===0&&gy!==0)||(y===5&&gy!==5)?names[i]:null;}).filter(Boolean);
+    if(!lost.length)return '';
+    return lang==='zh'?'注意：'+lost.join('、')+(already?'已经在':'会落在')+'无法返回的外边缘；外侧没有施力格，回不到当前小窝。':lost.join(' and ')+(already?' are trapped':' would be trapped')+' at an outer edge. There is no source tile outside the board to push them back toward these homes.';
+  }
+  function explainPrediction(result) {
+    let lines=['① '+describePhase(result.first,result.beforePositions||state.positions)];
+    if(result.second)lines.push('② '+describePhase(result.second,result.first.positions));
+    else if(levels[levelIndex].echo)lines.push(lang==='zh'?'② 这回合还没有旧印记；本次位置会留到下一回合。':'② No old mark yet; this puff leaves the next turn’s echo.');
+    const warning=edgeWarning(result.state.positions);if(warning)lines.push(warning);
+    const home=result.state.positions.filter((p,i)=>p===levels[levelIndex].goals[i]).length;
+    lines.push(lang==='zh'?`最终落点：${home} / ${result.state.positions.length} 位到家。`:`After both phases: ${home} / ${result.state.positions.length} friends home.`);
+    $('prediction').textContent=lines.join('\n');$('prediction').classList.toggle('danger',!!warning);
+  }
+  function authoredHint() {
+    const level=levels[levelIndex];if(!level.hintSteps)return null;
+    let cursor=E.initial(level);
+    for(let i=0;i<level.solution.length;i++){
+      if(E.signature(cursor)===E.signature(state))return {center:level.solution[i],why:(lang==='zh'?level.hintSteps:level.hintStepsEn)[i]};
+      cursor=E.act(cursor,level.solution[i],level).state;
+    }
+    return null;
+  }
+  function renderPreview() {
+    document.querySelector('[data-i="predictionTitle"]').textContent=selected===null&&lastResult?(lang==='zh'?'刚才这一声':'THE PUFF THAT JUST SETTLED'):T().predictionTitle;
+    if (busy || won || selected === null) {
+      $('preview').innerHTML = '';
+      if(!busy){if(lastResult)explainPrediction(lastResult);else{$('prediction').textContent=lang==='zh'?'直接点一格空地，就会吹气。鼠标悬停可先看预览；走错随时撤销。危险落点只提醒，不拦截。':'Click or tap an empty tile to puff. Hover to preview; undo any time. Risky landings are warned about, never blocked.';$('prediction').classList.remove('danger');}}
+      if (selected === null) { $('selection-title').textContent = T().select; $('selection-detail').textContent = touch() ? T().touchDetail : T().selectDetail; }
+      return;
+    }
+    const level = levels[levelIndex], result = E.act(state, selected, level);
+    if (!result.ok) { $('preview').innerHTML = ''; return; }
+    explainPrediction(result);
+    const unsafe=!!edgeWarning(result.state.positions);
+    $('release').disabled=false;
+    const width = $('board').clientWidth || 500, gap = parseFloat(getComputedStyle($('board')).gap) * 600 / width;
+    const stride = (600 + gap) / 6, cellSize = (600 - 5 * gap) / 6;
+    const center = p => [p % 6 * stride + cellSize / 2, Math.floor(p / 6) * stride + cellSize / 2];
+    let svg = '<defs><marker id="gold-arrow" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto"><path d="M0 0L5 3L0 6" fill="none" stroke="#f0cc83" stroke-width="1.2"/></marker><marker id="echo-arrow" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto"><path d="M0 0L5 3L0 6" fill="none" stroke="#c3a6ec" stroke-width="1.2"/></marker></defs>';
+    result.first.rays.flat().forEach(p => { const [x, y] = center(p); svg += `<circle cx="${x}" cy="${y}" r="3" fill="#e9c57c" opacity=".25"/>`; });
+    function phase(data, number, color, marker) {
+      if (!data) return;
+      for (const hit of data.hits) {
+        const [x, y] = center(hit.from), [tx, ty] = center(hit.to);
+        if (hit.blocked) { svg += `<text x="${x + 24}" y="${y - 23}" text-anchor="middle" font-size="20" fill="${color}" opacity=".9">×</text>`; continue; }
+        svg += `<path d="M${x + hit.dx * 20} ${y + hit.dy * 20}L${tx - hit.dx * 19} ${ty - hit.dy * 19}" stroke="${color}" stroke-width="3" ${number === 2 ? 'stroke-dasharray="5 5"' : ''} marker-end="url(#${marker})" opacity=".95"/>`;
+        svg += `<rect x="${tx - 23}" y="${ty - 23}" width="46" height="46" rx="16" fill="${colors[hit.piece]}" fill-opacity=".13" stroke="${color}" stroke-width="2" ${number === 2 ? 'stroke-dasharray="5 4"' : ''}/><circle cx="${tx + 20}" cy="${ty - 21}" r="11" fill="${color}"/><text x="${tx + 20}" y="${ty - 17}" font-size="13" text-anchor="middle" fill="#30384b" font-weight="700">${number}</text>`;
+      }
+    }
+    if(previewPhase!=='second')phase(result.first, 1, '#edc67f', 'gold-arrow');
+    if(previewPhase!=='first')phase(result.second, 2, '#c2a3ec', 'echo-arrow');
+    $('preview').innerHTML = svg;
+    $('selection-title').textContent = T().selected(Math.floor(selected / 6) + 1, selected % 6 + 1);
+    const any = result.first.hits.some(h => !h.blocked) || result.second?.hits.some(h => !h.blocked);
+    $('selection-detail').textContent = unsafe ? (lang==='zh'?'边缘有风险，仍可点击 · Z 撤销':'Risky edge — click to try · Z to undo') : any ? result.second ? T().previewFirst : T().previewOne : T().none;
+  }
+  function select(p, hint = false) {
+    if (busy || won) return false;
+    if (!E.act(state, p, levels[levelIndex]).ok) return false;
+    if (selected === p && !hint) return true;
+    selected = p; if (!hint) hintCell = null;
+    paint(); renderPreview(); return true;
+  }
+  function invalid() { status(T().invalid, true); $('board-wrap').classList.remove('invalid'); void $('board-wrap').offsetWidth; $('board-wrap').classList.add('invalid'); }
+  function burst(center, echo) {
+    const color = echo ? '#c0a1e9' : '#f0cb80';
+    const node = document.createElement('div'); node.style.cssText = `--x:${center % 6};--y:${Math.floor(center / 6)};--wave:${color}`; node.className = 'ripple';
+    const word = document.createElement('div'); word.style.cssText = node.style.cssText; word.className = 'poof-word'; word.textContent = echo ? 'echo…' : 'POOF!';
+    $('effects').append(node, word); setTimeout(() => { node.remove(); word.remove(); }, 700);
+    playSound(echo ? 'echo' : 'puff');
+  }
+  function animatePositions(data) {
+    visual = [...data.positions]; paint();
+    data.hits.filter(h => !h.blocked).forEach(hit => { const piece = $('piece-' + hit.piece); piece.classList.remove('bounce'); void piece.offsetWidth; piece.classList.add('bounce'); });
+  }
+  async function release(p = selected) {
+    if (busy || won || p === null) return;
+    const result = E.act(state, p, levels[levelIndex]); if (!result.ok) { invalid(); return; }
+    result.beforePositions=[...state.positions];
+    const unsafe=edgeWarning(result.state.positions);
+    const planned=authoredHint(), why=planned?.center===p?planned.why:'';
+    explainPrediction(result);
+    const token = ++revision; history.push(E.clone(state)); busy = true; hinting = false; hintTier = 0; hintCell = null; selected = null;
+    $('preview').innerHTML = ''; $('phase-one').classList.add('active'); paint(); status(T().phaseFirst); burst(p, false);
+    await delay(65); if (token !== revision) return;
+    animatePositions(result.first);
+    await delay(300); if (token !== revision) return;
+    $('phase-one').classList.remove('active');
+    if (result.second) {
+      $('phase-two').classList.add('active'); status(T().phaseSecond); burst(result.second.center, true);
+      await delay(65); if (token !== revision) return;
+      animatePositions(result.second);
+      await delay(300); if (token !== revision) return;
+      $('phase-two').classList.remove('active');
+    }
+    state = result.state; visual = [...state.positions]; busy = false; won = result.won; lastResult=result;
+    if (won) {
+      const stars = state.moves <= levels[levelIndex].par ? 3 : state.moves <= levels[levelIndex].par + 2 ? 2 : 1;
+      const key=scoreKey(levelIndex);
+      if (!best[key] || state.moves < best[key].moves) best[key] = { moves: state.moves, stars };
+      persist(); renderNav(); paintWin(); playSound('win');
+    }
+    paint(); renderPreview();
+    status(won ? T().win+(why?' '+why:'') : unsafe ? unsafe+' '+(lang==='zh'?'按 Z 或点“撤销”可以退回这一声。':'Press Z or Undo to take this puff back.') : why || (!result.moved ? levels[levelIndex].echo ? T().noMoveEcho : T().noMove : levels[levelIndex].echo ? T().after : T().plainAfter),!!unsafe);
+  }
+  function paintWin() {
+    const stars = state.moves <= levels[levelIndex].par ? 3 : state.moves <= levels[levelIndex].par + 2 ? 2 : 1;
+    $('stars').textContent = '★'.repeat(stars) + '☆'.repeat(3 - stars);
+    $('win-title').textContent = levelIndex === levels.length - 1 ? T().finish : T().win;
+    $('win-detail').textContent = T().winDetail(state.moves);
+    $('next').textContent = levelIndex === levels.length - 1 ? T().again : T().next;
+  }
+  function load(i) {
+    revision++; levelIndex = i; chapterPage = chapterOf(i); state = E.initial(levels[i]); visual = [...state.positions]; history = []; busy = false; hinting = false; hintTier = 0; won = false; selected = null; hintCell = null;
+    previewPhase='all';lastResult=null;
+    $('effects').innerHTML = ''; $('phase-one').classList.remove('active'); $('phase-two').classList.remove('active');
+    renderBoard(); applyLanguage(); status(meta()[2]);
+    try{const url=new URL(location.href);url.searchParams.set('level',i+1);url.searchParams.set('edition','balanced');window.history.replaceState(null,'',url);}catch{}
+  }
+  function undo() {
+    if (!history.length) return;
+    revision++; state = history.pop(); visual = [...state.positions]; busy = false; hinting = false; hintTier = 0; won = false; selected = null; hintCell = null;
+    previewPhase='all';lastResult=null;
+    $('effects').innerHTML = ''; $('phase-one').classList.remove('active'); $('phase-two').classList.remove('active'); paint(); renderPreview(); status(T().undoStatus);
+  }
+  function giveHint() {
+    if (busy || won || hinting) return;
+    const level=levels[levelIndex];
+    if(level.hintMode==='progressive'&&hintTier===0){hintTier=1;hintCell=null;const next=state.moves?authoredHint():null;status(next?next.why:(lang==='zh'?level.clue:level.clueEn));paint();renderPreview();return;}
+    hinting = true; paint(); status(T().thinking); const token = revision;
+    const planned=authoredHint();
+    if(planned){setTimeout(()=>{if(token!==revision)return;hinting=false;hintCell=planned.center;select(hintCell,true);status(planned.why+' '+T().hintAt(Math.floor(hintCell/6)+1,hintCell%6+1));},15);return;}
+    const trapped=edgeWarning(state.positions, true);
+    if(trapped){hinting=false;paint();status(trapped+' '+(lang==='zh'?'撤销到进入边缘之前，再换方向。':'Undo to before the edge push and choose another direction.'),true);return;}
+    const finder = E.search(levels[levelIndex], state, 160000);
+    function nextChunk() {
+      if (token !== revision) return;
+      const result = finder.advance(200);
+      if (!result.done) { setTimeout(nextChunk, 0); return; }
+      hinting = false;
+      if (result.path?.length) {
+        hintCell = result.path[0]; select(hintCell, true); const r=E.act(state,hintCell,levels[levelIndex]);status(T().hintAt(Math.floor(hintCell / 6) + 1, hintCell % 6 + 1)+' '+describePhase(r.first,state.positions)+(r.second?' '+describePhase(r.second,r.first.positions):''));
+        if (innerWidth < 680) $('board-wrap').scrollIntoView({ block: 'center', behavior: reduced ? 'instant' : 'smooth' });
+      } else { paint(); status(T().noHint, true); }
+    }
+    setTimeout(nextChunk, 15);
+  }
+  $('board').addEventListener('pointermove',event=>{if(event.pointerType==='touch'||event.buttons||hintCell!==null)return;const cell=event.target.closest('[data-cell]');if(cell)select(Number(cell.dataset.cell));});
+  $('board').addEventListener('focusin', event => { const cell = event.target.closest('[data-cell]'); if (cell) select(Number(cell.dataset.cell)); });
+  $('board').addEventListener('click', event => {
+    const cell = event.target.closest('[data-cell]'); if (!cell || busy || won) return;
+    const p = Number(cell.dataset.cell);
+    if (!select(p)) { invalid(); return; }
+    release(p);
+  });
+  $('release').addEventListener('click', () => release());
+  $('undo').addEventListener('click', undo); $('restart').addEventListener('click', () => load(levelIndex)); $('hint').addEventListener('click', giveHint);
+  $('level-list').addEventListener('click', event => { const button = event.target.closest('[data-level]'); if (button){load(Number(button.dataset.level));document.querySelector('.play-card').scrollIntoView?.({block:'start',behavior:reduced?'instant':'smooth'});} });
+  $('preview-tabs').addEventListener('click',event=>{const b=event.target.closest('[data-preview]');if(b&&!busy){previewPhase=b.dataset.preview;paint();renderPreview();}});
+  $('chapter-tabs').addEventListener('click', event => { const button = event.target.closest('[data-chapter]'); if (button) { chapterPage = Number(button.dataset.chapter); renderNav(); } });
+  $('next').addEventListener('click', () => load((levelIndex + 1) % levels.length)); $('replay').addEventListener('click', () => load(levelIndex));
+  $('language').addEventListener('click', () => { lang = lang === 'zh' ? 'en' : 'zh'; persist(); applyLanguage(); status(meta()[2]); });
+  $('sound').addEventListener('click', () => { sound = !sound; persist(); applyLanguage(); if (sound) playSound('puff'); });
+  $('help').addEventListener('click', () => $('help-dialog').showModal());
+  $('close-help').addEventListener('click', () => $('help-dialog').close()); $('help-play').addEventListener('click', () => $('help-dialog').close());
+  document.addEventListener('keydown', event => {
+    if (event.ctrlKey || event.altKey || event.metaKey || /INPUT|TEXTAREA|SELECT/.test(event.target.tagName)) return;
+    if ($('help-dialog').open) return;
+    if (event.code === 'KeyZ') { event.preventDefault(); undo(); }
+    if (event.code === 'KeyR') { event.preventDefault(); load(levelIndex); }
+    if (event.code === 'KeyH') { event.preventDefault(); giveHint(); }
+    if (event.code === 'Escape') { selected = null; hintCell = null; paint(); renderPreview(); }
+    if (event.code === 'Space' && selected !== null && !won) { event.preventDefault(); release(); }
+    const cell = event.target.closest('[data-cell]');
+    if (cell && event.code.startsWith('Arrow')) {
+      event.preventDefault(); const p = Number(cell.dataset.cell), [x, y] = E.xy(p, levels[levelIndex]);
+      const [dx, dy] = { ArrowUp: [0, -1], ArrowDown: [0, 1], ArrowLeft: [-1, 0], ArrowRight: [1, 0] }[event.code];
+      if (E.inside(x + dx, y + dy, levels[levelIndex])) $('board').querySelector(`[data-cell="${(y + dy) * 6 + x + dx}"]`).focus();
+    }
+  });
+  new ResizeObserver(() => renderPreview()).observe($('board'));
+  const requestedLevel = Number(new URLSearchParams(location.search).get('level'));
+  load(Number.isInteger(requestedLevel) && requestedLevel >= 1 && requestedLevel <= levels.length ? requestedLevel - 1 : 0);
+})();
+</script></body></html>

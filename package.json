@@ -1,0 +1,12 @@
+{
+  "name": "poof-three-puffs",
+  "version": "1.0.0",
+  "private": true,
+  "description": "POOF! 三声清盘：20关二维回声消除益智游戏，含单文件手机兼容版。",
+  "scripts": {
+    "build": "node scripts/build.cjs",
+    "test": "node --test test/engine.test.cjs",
+    "start": "node server.cjs"
+  },
+  "engines": {"node": ">=18"}
+}

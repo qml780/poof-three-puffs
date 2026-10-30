@@ -58,8 +58,9 @@ var __async = (__this, __arguments, generator) => {
   const reduced = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches), delay = (ms) => new Promise((r) => setTimeout(r, reduced ? 1 : ms));
   let index = 0, page = 0, state, visual = [], history = [], selected = null, hintCell = null, busy = false, won = false, lost = false, revision = 0, hinting = false, lastResult = null;
   const level = () => L[index], where = (p) => `${Math.floor(p / 6) + 1}行${p % 6 + 1}列`;
-  function status(text, error = false) {
-    $("status").textContent = text;
+  function status(text, error = false, reveal = false) {
+    $("status").textContent = error || reveal ? text : "";
+    $("status").hidden = !(text && (error || reveal));
     $("status").classList.toggle("error", error);
   }
   function soundPaint() {
@@ -93,7 +94,7 @@ var __async = (__this, __arguments, generator) => {
     $("chapters").innerHTML = chapterNames.map((c, i) => `<button data-page="${i}" class="${i === page ? "active" : ""}" aria-label="${c}" aria-pressed="${i === page}">${chapterTabs[i]}</button>`).join("");
     $("levels").innerHTML = L.slice(page * 4, page * 4 + 4).map((l) => `<button data-level="${l.id - 1}" class="${l.id - 1 === index ? "active " : ""}${scoreFor(l) ? "done" : ""}" aria-label="第${l.id}盘：${l.title}" ${l.id - 1 === index ? 'aria-current="step"' : ""}>${String(l.id).padStart(2, "0")}${scoreFor(l) ? `<small>${scoreFor(l).moves} 声清盘</small>` : l.expert ? "<small>新棋局</small>" : l.strategy ? "<small>进阶</small>" : ""}</button>`).join("");
     $("completion").textContent = `${L.filter((l) => scoreFor(l)).length} / ${L.length}`;
-    $("journey-title").textContent = `${L.length} 盘小挑战`;
+    $("journey-title").textContent = "选择关卡";
   }
   function pieces(items = visual, rebuild = false) {
     if (rebuild) $("pieces").innerHTML = "";
@@ -131,8 +132,9 @@ var __async = (__this, __arguments, generator) => {
     $("charges").setAttribute("aria-label", `还剩${remaining}声气浪`);
     $("clear-count").textContent = `${cleared} / ${total}`;
     $("clear-progress").style.width = `${100 * cleared / total}%`;
-    $("combo-count").textContent = state.combo >= 2 ? `本盘最高 · ${state.combo} 组连消` : "同色一碰 · 成对消除";
-    $("echo-label").innerHTML = state.echo === null ? "<b>②</b> 先留下回声" : `<b>②</b> ${busy ? "旧位置" : "下次回声"} · ${where(state.echo)}`;
+    $("combo-count").textContent = state.combo >= 2 ? `${state.combo} 组连消` : "";
+    $("echo-label").hidden = state.echo === null;
+    $("echo-label").textContent = state.echo === null ? "" : `↻ ${where(state.echo)}`;
     $("undo").disabled = !history.length;
     $("hint").disabled = busy || won || lost || hinting;
   }
@@ -155,12 +157,10 @@ ${r.popped ? "空出来的位置能继续用。" : "这次留下的印记，下�
     for (const el of $("pieces").children) el.classList.remove("will-pop", "echo-pop");
     if (busy || won || lost) return;
     if (selected === null) {
-      $("prediction").textContent = lastResult ? summary(lastResult, true) : "直接点空格就吹气。三声内清空，就成功；同色碰撞后，风会穿过去接着吹。";
       return;
     }
     const r = E.act(state, selected, level());
     if (!r.ok) return;
-    $("prediction").textContent = summary(r);
     const width = $("board").clientWidth || 500, gap = parseFloat(getComputedStyle($("board")).gap || 6) * 600 / width, stride = (600 + gap) / 6, size = (600 - 5 * gap) / 6;
     const center = (p) => [p % 6 * stride + size / 2, Math.floor(p / 6) * stride + size / 2];
     let svg = '<defs><marker id="new-arrow" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="4" markerHeight="4" orient="auto"><path d="M0 0L10 5L0 10z" fill="#edcf8d"/></marker><marker id="old-arrow" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="4" markerHeight="4" orient="auto"><path d="M0 0L10 5L0 10z" fill="#c8a9ed"/></marker></defs>';
@@ -258,7 +258,6 @@ ${r.popped ? "空出来的位置能继续用。" : "这次留下的印记，下�
       $("preview").innerHTML = "";
       boardPaint();
       stats();
-      $("prediction").textContent = "① 本次气浪先出发…";
       status("看看这一声能连消几组。");
       function animate(data, echo) {
         return __async(this, null, function* () {
@@ -294,7 +293,6 @@ ${r.popped ? "空出来的位置能继续用。" : "这次留下的印记，下�
       }
       if (!(yield animate(r.first, false))) return;
       if (r.second && r.first.items.length) {
-        $("prediction").textContent = "② 上一次的位置，补一阵回声…";
         if (!(yield animate(r.second, true))) return;
       }
       if (token !== revision) return;
@@ -308,7 +306,6 @@ ${r.popped ? "空出来的位置能继续用。" : "这次留下的印记，下�
       boardPaint();
       stats();
       preview();
-      $("prediction").textContent = summary(r, true);
       status(why || `这一声清掉 ${r.popped} 只，${level().limit - state.moves} 声还可以继续安排。`);
       if (won || lost) finish();
     });
@@ -340,7 +337,7 @@ ${r.popped ? "空出来的位置能继续用。" : "这次留下的印记，下�
       $("result-detail").textContent = "三声用完了，试试换一个交点。\n可以撤销最后一声，继续想。";
       $("result-primary").textContent = "↩ 撤销最后一声";
       $("result-secondary").textContent = "↻ 从头再试";
-      status("三声用完，还没有清空。撤销或重来即可继续试。", true);
+      status("");
     }
   }
   function undo() {
@@ -379,10 +376,8 @@ ${r.popped ? "空出来的位置能继续用。" : "这次留下的印记，下�
     lastResult = null;
     $("result").hidden = true;
     $("effects").innerHTML = "";
-    $("chapter").textContent = `CHAPTER ${String(page + 1).padStart(2, "0")} · ${chapterNames[page].split(" · ")[1]}`;
+    $("chapter").textContent = `第 ${index + 1} 关 / ${L.length}`;
     $("title").textContent = level().title;
-    $("tag").textContent = level().tag;
-    $("tip").textContent = level().tip;
     $("board").innerHTML = Array.from({ length: 36 }, (_, p) => `<button type="button" class="cell" data-cell="${p}" data-testid="cell-${p}"></button>`).join("");
     pieces(visual, true);
     boardPaint();
@@ -411,7 +406,7 @@ ${r.popped ? "空出来的位置能继续用。" : "这次留下的印记，下�
       hintCell = p;
       select(p, true);
       stats();
-      status(`下一步：${where(p)}。${why}`);
+      status(`下一步：${where(p)}。${why}`, false, true);
       safeScroll();
     };
     if (plan) {
@@ -420,7 +415,7 @@ ${r.popped ? "空出来的位置能继续用。" : "这次留下的印记，下�
     }
     hinting = true;
     stats();
-    status("看看剩下的几声怎么连起来…");
+    status("正在找下一步…", false, true);
     const task = E.search(level(), state);
     function step() {
       var _a;
@@ -459,6 +454,7 @@ ${r.popped ? "空出来的位置能继续用。" : "这次留下的印记，下�
     const b = e.target.closest("[data-level]");
     if (b) {
       load(+b.dataset.level);
+      $("level-picker").removeAttribute("open");
       safeScroll();
     }
   });

@@ -15,3 +15,38 @@
 dialog:not([open]){display:none}dialog[open]{display:block;max-height:85vh;overflow:auto}
 @supports not (selector(:modal)){dialog[open]{position:fixed;z-index:100;left:50%;top:50%;margin:0;transform:translate(-50%,-50%)}}
 @media(max-width:360px){.shell{padding:0 10px}.play-card{padding:15px 12px}.stage-head h2{font-size:18px}.brand small{margin-left:9px}.top-tools{gap:5px}}
+
+/* Compact play screen: explanations are available only in Help or requested hints. */
+.shell{max-width:560px;padding:20px 18px 28px}
+.layout{display:block}
+.play-card{padding:18px 20px 15px;border-radius:22px}
+.game-tools{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px;min-height:30px}
+.chapter{font-size:11px;letter-spacing:1px;color:#aebbd1}
+.top-tools{gap:7px}
+.top-tools button{min-width:34px;min-height:32px;padding:6px 9px;border-color:#516078;color:#cbd5e7;background:#303e56;border-radius:9px;font-size:11px}
+#sound{padding:3px 10px;font-size:17px}
+.stage-head{margin-bottom:17px;align-items:center}
+.stage-head h2{margin:0;font-size:23px;line-height:1.35;letter-spacing:-.5px}
+.charges{justify-content:flex-end}
+.board-wrap{width:100%;max-width:440px;margin-left:auto;margin-right:auto}
+.board-meta{margin:13px 0 9px;font-size:10px;gap:7px;min-height:15px}
+#combo-count{font-size:10px;margin-left:auto;color:#c1d8aa}
+.echo-label{color:#bda5df;white-space:nowrap;font-size:9px}
+.controls{margin-top:13px;padding-top:10px}
+.controls button{min-height:39px;font-size:12px;padding:8px 3px}
+.status{margin-top:12px;padding:10px 11px;border:1px solid #55607b;border-radius:9px;min-height:0;color:#dfd2f1;background:#303d55;font-size:12px;line-height:1.8}
+.status.error{color:#ecd3ad;border-color:#846f52}
+.level-picker{margin-top:12px;padding:0 15px;border:1px solid #e1ded5;border-radius:13px;background:#fffdf7}
+.level-picker summary{display:flex;align-items:center;gap:12px;min-height:48px;padding:8px 0;cursor:pointer;list-style:none;font-size:12px;color:#687181;touch-action:manipulation}
+.level-picker summary::-webkit-details-marker{display:none}
+.level-picker summary::after{content:'+';font-size:19px;font-weight:400;color:#9b93a3}
+.level-picker[open] summary::after{content:'−'}
+#journey-title{font-size:12px;font-weight:500;letter-spacing:0;color:#566176}
+#completion{margin-left:auto;font-size:10px;color:#939a9f}
+.level-picker[open]{padding-bottom:15px}
+.level-picker #chapters{margin-top:3px}
+.level-picker #levels button{min-height:46px}
+summary:focus-visible{outline:2px solid #c5a6df;outline-offset:4px;border-radius:6px}
+dialog[open]{position:fixed;z-index:100;left:50%;top:50%;margin:0;transform:translate(-50%,-50%)}
+@media(max-width:680px){.shell{max-width:490px;padding:12px 12px 20px}.play-card{padding:15px 16px 12px;border-radius:19px}.game-tools{margin-bottom:12px}.stage-head{margin-bottom:14px}.stage-head h2{font-size:21px}.controls button{min-height:41px;font-size:11px}.controls kbd{display:none}.board-meta{font-size:10px}.chapter{font-size:10px}}
+@media(max-width:360px){.shell{padding:10px 9px 18px}.play-card{padding:13px 12px 11px}.stage-head h2{font-size:18px}.top-tools button{padding:5px 8px}.board-meta{font-size:9px}.echo-label{font-size:8px}}

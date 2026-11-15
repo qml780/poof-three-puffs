@@ -51,18 +51,56 @@ summary:focus-visible{outline:2px solid #c5a6df;outline-offset:4px;border-radius
 dialog[open]{position:fixed;z-index:100;left:50%;top:50%;margin:0;transform:translate(-50%,-50%)}
 @media(max-width:680px){.shell{max-width:490px;padding:12px 12px 20px}.play-card{padding:15px 16px 12px;border-radius:19px}.game-tools{margin-bottom:12px}.stage-head{margin-bottom:14px}.stage-head h2{font-size:21px}.controls button{min-height:41px;font-size:11px}.controls kbd{display:none}.board-meta{font-size:10px}.chapter{font-size:10px}}
 @media(max-width:360px){.shell{padding:10px 9px 18px}.play-card{padding:13px 12px 11px}.stage-head h2{font-size:18px}.top-tools button{padding:5px 8px}.board-meta{font-size:9px}.echo-label{font-size:8px}}
+
+.tutorial {
+  max-width: 440px;
+  margin: 0 auto 12px;
+  padding: 8px 12px 10px;
+  border: 1px solid #55627a;
+  border-radius: 12px;
+  background: #303e56;
+}
+.tutorial-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.tutorial-head strong { color: #f3dca1; font-size: 13px; }
+#tutorial-skip {
+  flex-shrink: 0;
+  min-height: 36px;
+  padding: 0 2px 0 8px;
+  color: #c4cede;
+  background: transparent;
+  font-size: 11px;
+}
+.tutorial p { margin: 0; font-size: 13px; line-height: 1.6; }
+#tutorial-feedback { margin-top: 5px; color: #c0d6c4; font-size: 12px; }
+.cell.tutorial-target {
+  background: #505266;
+  box-shadow: inset 0 0 0 2px #f3dca1, 0 0 12px #f3dca144;
+}
+.help-continue { display: block; margin: 0 auto; color: #596479; }
+@media(max-width: 360px) {
+  .tutorial { padding: 5px 9px 8px; }
+  .tutorial p { font-size: 12px; }
+}
 </style></head>
 <body><div class="shell">
 <main><section id="mobile-open-note" class="mobile-open-note" role="status"><b>游戏尚未运行</b><p>如果你在微信或 QQ 的文件预览中看到这段提示，请用浏览器打开原始 HTML 文件，或直接打开在线试玩。文件预览可能不允许运行游戏脚本。</p><a href="https://qml780.github.io/poof-three-puffs/?level=1">打开免登录在线试玩 →</a><p>离线文件无需联网；请确认打开方式允许执行 JavaScript。</p></section>
 <div class="layout"><section class="play-card" aria-label="三声清盘游戏区"><div class="game-tools"><div class="chapter" id="chapter"></div><div class="top-tools"><button id="sound" aria-label="关闭音效" aria-pressed="true">♪</button><button id="help">怎么玩</button></div></div><div class="stage-head"><div><h2 id="title">碰一下，就消失</h2></div><div class="budget"><div id="charges" class="charges" aria-label="剩余气浪"></div><span>还剩 <strong id="remaining">3</strong> 声</span></div></div>
-
+<section id="tutorial" class="tutorial" aria-label="新手引导" hidden>
+  <div class="tutorial-head"><strong id="tutorial-topic"></strong><button type="button" id="tutorial-skip">跳过引导</button></div>
+  <div role="status" aria-atomic="true"><p id="tutorial-action"></p><p id="tutorial-feedback" hidden></p></div>
+</section>
 <div class="board-wrap" id="board-wrap"><div id="board" class="board" role="group" aria-label="6行6列消除棋盘"><button type="button" class="cell" data-cell="0"></button><button type="button" class="cell" data-cell="1"></button><button type="button" class="cell" data-cell="2"></button><button type="button" class="cell" data-cell="3"></button><button type="button" class="cell" data-cell="4"></button><button type="button" class="cell" data-cell="5"></button><button type="button" class="cell" data-cell="6"></button><button type="button" class="cell" data-cell="7"></button><button type="button" class="cell" data-cell="8"></button><button type="button" class="cell" data-cell="9"></button><button type="button" class="cell" data-cell="10"></button><button type="button" class="cell" data-cell="11"></button><button type="button" class="cell" data-cell="12"></button><button type="button" class="cell" data-cell="13"></button><button type="button" class="cell occupied" data-cell="14"></button><button type="button" class="cell occupied" data-cell="15"></button><button type="button" class="cell" data-cell="16"></button><button type="button" class="cell" data-cell="17"></button><button type="button" class="cell" data-cell="18"></button><button type="button" class="cell" data-cell="19"></button><button type="button" class="cell" data-cell="20"></button><button type="button" class="cell" data-cell="21"></button><button type="button" class="cell" data-cell="22"></button><button type="button" class="cell" data-cell="23"></button><button type="button" class="cell" data-cell="24"></button><button type="button" class="cell" data-cell="25"></button><button type="button" class="cell" data-cell="26"></button><button type="button" class="cell" data-cell="27"></button><button type="button" class="cell" data-cell="28"></button><button type="button" class="cell" data-cell="29"></button><button type="button" class="cell" data-cell="30"></button><button type="button" class="cell" data-cell="31"></button><button type="button" class="cell" data-cell="32"></button><button type="button" class="cell" data-cell="33"></button><button type="button" class="cell" data-cell="34"></button><button type="button" class="cell" data-cell="35"></button></div><div id="pieces" class="pieces" aria-hidden="true"><div class="piece" style="--x:2;--y:2;--color:#edb2bf"><div class="blob"><i class="eye l"></i><i class="eye r"></i><i class="mouth"></i></div></div><div class="piece" style="--x:3;--y:2;--color:#edb2bf"><div class="blob"><i class="eye l"></i><i class="eye r"></i><i class="mouth"></i></div></div></div><svg id="preview" class="preview" viewBox="0 0 600 600" aria-hidden="true" /><div id="effects" class="effects" aria-hidden="true"></div><div id="result" class="result" hidden><div class="result-inner"><div id="result-icon" class="result-icon">✦</div><span id="result-kicker" class="eyebrow"></span><h3 id="result-title"></h3><p id="result-detail"></p><button id="result-primary" class="primary"></button><button id="result-secondary" class="text-button"></button></div></div></div>
 <div class="board-meta"><span>已消除 <strong id="clear-count">0 / 2</strong></span><span id="combo-count">同色一碰 · 成对消除</span><span hidden class="echo-label" id="echo-label"><b>②</b> 先留下回声</span></div><div class="clear-track"><span id="clear-progress"></span></div>
 
 <div class="controls"><button id="undo" disabled>↩ 撤销 <kbd>Z</kbd></button><button id="restart">↻ 重来 <kbd>R</kbd></button><button id="hint">✧ 下一步 <kbd>H</kbd></button></div><div hidden id="status" class="status" role="status" aria-live="polite"></div></section>
 <details class="level-picker" id="level-picker"><summary><span class="eyebrow" id="journey-title">选择关卡</span><span id="completion">0 / 20</span></summary><nav id="chapters" aria-label="选择章节"></nav><nav id="levels" aria-label="选择关卡"></nav></details></div>
 </main></div>
-<dialog id="help-dialog"><div class="help-inner"><button id="close-help" class="close" aria-label="关闭帮助">×</button><span class="eyebrow">THREE PUFFS. A LOT OF LITTLE POPS.</span><h2>点格子，碰一下，消掉。</h2><p>直接点没有角色的空格，气浪向上、右、下、左各吹最多三格，先遇到的角色向外移动一格。</p><p>如果落点是同色角色，两只一起消除。这阵风会穿过空位继续吹；撞到异色、墙或边界就停下，不会把一串角色推走。</p><p>下一次点击，先播新气浪，再从上一次的位置播一次回声。回声不用额外花次数，但每次点击都会扣一声，包括用来预留回声的空吹。</p><p>每盘三声内清空就赢。第三声全部消掉也算成功。没清完可以撤销，或重新试。</p><button id="help-play" class="primary">明白了，试着消一盘 →</button></div></dialog>
+<dialog id="help-dialog"><div class="help-inner"><button id="close-help" class="close" aria-label="关闭帮助">×</button><h2>怎么玩</h2><p>直接点空格，气浪沿上下左右各吹最多三格，把遇到的角色向外推一格。</p><p>同色撞在一起会成对消失，气浪能穿过空出来的位置继续吹。异色、石柱和边界会挡住。</p><p>从第二次点击起，先吹本次点击的空格，再从上一次点击的位置自动补吹一阵。这阵回声不额外扣次数。</p><p>最多点三次，把棋盘清空就赢。随时可以撤销、重来或查看下一步。</p><button id="help-tutorial" class="primary">从第 1 关开始教学 →</button><button id="help-play" class="text-button help-continue">继续当前关卡</button></div></dialog>
 <script>(function() {
   if (!Array.prototype.includes) Object.defineProperty(Array.prototype, "includes", { value: function(value, from) {
     var start = from || 0;
@@ -1884,6 +1922,30 @@ var __async = (__this, __arguments, generator) => {
   "use strict";
   const E = window.ClearEngine, L = window.ClearLevels, $ = (id) => document.getElementById(id), colors = ["#edb2bf", "#a2d6c2", "#baa9e1"], symbols = ["▲", "●", "✦"], names = ["粉色", "绿色", "紫色"];
   const chapterNames = ["01 · 碰碰消", "02 · 借位组合", "03 · 三声进阶", "04 · 连锁棋局", "05 · 极限配对"], chapterTabs = ["碰撞", "借位", "进阶", "棋局", "极限"], scoreKey = "poof-clear-expert-v1-best";
+  const lessons = [
+    { topic: "点空格，让同色相撞", steps: [
+      ["点粉色左边的亮格。目标是三声内清空棋盘。", "气浪把近处的粉色向右推了一格。同色一撞，两只一起消失。"]
+    ] },
+    { topic: "一格能吹四面", steps: [
+      ["点中央发亮的空格，看看上下左右会发生什么。", "同一声气浪向四个方向推，一次消掉四对。"]
+    ] },
+    { topic: "消掉一对，风还能继续吹", steps: [
+      ["点左侧亮格，盯住同一行的粉色和绿色。", "粉色消失后，同一阵风穿过去，又消掉了绿色。"],
+      ["点下方紫色左边的亮格，把最后一对碰掉。", "这一关用两声清盘。每次点击只扣一声，连消也一样。"]
+    ] },
+    { topic: "看懂回声", steps: [
+      ["点粉色左边的亮格，先把两只粉色推近。", "粉色只靠近了一格。带 ↻ 的空格下一声会再吹一次。"],
+      ["点下方亮格。看绿色先消失，再看 ↻ 从哪里吹。", "新气浪先消绿色，回声再从旧位置消粉色。两阵风只扣一声。"]
+    ] },
+    { topic: "用上刚空出来的格子", steps: [
+      ["点左侧亮格，看看粉色消掉后，绿色有没有移动。", "粉色让出了空位，气浪穿过去，把绿色推近一格。"],
+      ["点原来被粉色占住的亮格，向右吹剩下的绿色。", "刚消出来的空格变成了新的发力点。"]
+    ] },
+    { topic: "安排新气浪和回声", steps: [
+      ["点粉色左边的亮格，把粉色推开，腾出下次的落点。", "粉色原来站的格子空了，第一声的位置留着 ↻。"],
+      ["点新亮格。看新气浪和旧回声怎样接力推粉色。", "新气浪消绿色、推近粉色，旧回声补上最后一推。后面就由你自己找落点了。"]
+    ] }
+  ];
   const layoutKey = (l) => l.scoreKey || l.id, scoreFor = (l) => best[layoutKey(l)];
   function mergeScores(target, source) {
     if (!source || typeof source !== "object") return;
@@ -1902,7 +1964,8 @@ var __async = (__this, __arguments, generator) => {
   }
   if (!best || typeof best !== "object" || Array.isArray(best)) best = {};
   const reduced = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches), delay = (ms) => new Promise((r) => setTimeout(r, reduced ? 1 : ms));
-  let index = 0, page = 0, state, visual = [], history = [], selected = null, hintCell = null, busy = false, won = false, lost = false, revision = 0, hinting = false, lastResult = null;
+  let index = 0, page = 0, state, visual = [], history = [], selected = null, hintCell = null, busy = false, won = false, lost = false, revision = 0, hinting = false;
+  let tutorialEnabled = true, tutorialCell = null, tutorialFeedback = "";
   const level = () => L[index], where = (p) => `${Math.floor(p / 6) + 1}行${p % 6 + 1}列`;
   function status(text, error = false, reveal = false) {
     $("status").textContent = error || reveal ? text : "";
@@ -1966,9 +2029,11 @@ var __async = (__this, __arguments, generator) => {
     for (const el of $("board").children) {
       const p = +el.dataset.cell, item = visual.find((i) => i.pos === p), wall = l.walls.includes(p);
       el.className = "cell" + (item ? " occupied" : "") + (wall ? " wall" : "") + (selected === p && !busy && !won && !lost ? " selected" : "") + (state.echo === p ? " echo" : "") + (hintCell === p ? " hinted" : "");
-      el.setAttribute("aria-label", `第${Math.floor(p / 6) + 1}行第${p % 6 + 1}列，${wall ? "墙" : item ? names[item.color] + symbols[item.color] + "角色" : "空格"}`);
+      const guided = !busy && p === tutorialCell;
+      if (guided) el.classList.add("tutorial-target");
+      el.setAttribute("aria-label", `第${Math.floor(p / 6) + 1}行第${p % 6 + 1}列，${wall ? "墙" : item ? names[item.color] + symbols[item.color] + "角色" : "空格"}${guided ? "，教学推荐" : ""}`);
       el.setAttribute("aria-disabled", String(busy || won || lost || !!item || wall));
-      el.innerHTML = index === 0 && state.moves === 0 && selected === null && !busy && p === 13 ? '<span class="starter">✦</span>' : "";
+      el.innerHTML = guided && selected !== p ? '<span class="starter" aria-hidden="true">✦</span>' : "";
     }
   }
   function stats() {
@@ -1993,9 +2058,7 @@ var __async = (__this, __arguments, generator) => {
     if (!parts.length) return p.events.some((h) => h.kind === "blocked") ? "异色挡住，保持原位" : p.events.some((h) => h.kind === "wall") ? "边界挡住，保持原位" : "这阵风暂时不推动角色";
     return parts.join("，");
   }
-  function summary(r, past = false) {
-    if (past) return `刚才这一声：清掉 ${r.popped} 只${r.pairs >= 2 ? ` · ${r.pairs} 组连消！` : ""}
-${r.popped ? "空出来的位置能继续用。" : "这次留下的印记，下一声会回响。"}`;
+  function summary(r) {
     return `① ${phaseText(r.first)}${r.second ? "\n② " + phaseText(r.second) : "\n② 本次位置会留给下一声回响"}${r.won ? " · 这一声可以清空！" : ""}`;
   }
   function preview() {
@@ -2077,10 +2140,29 @@ ${r.popped ? "空出来的位置能继续用。" : "这次留下的印记，下�
   function authored() {
     let s = E.initial(level());
     for (let i = 0; i < level().solution.length; i++) {
-      if (E.signature(s) === E.signature(state) && level().solution.length - i <= level().limit - state.moves) return { cell: level().solution[i], why: level().why[i] };
+      if (E.signature(s) === E.signature(state) && level().solution.length - i <= level().limit - state.moves) return { cell: level().solution[i], why: level().why[i], step: i };
       s = E.act(s, level().solution[i], level()).state;
     }
     return null;
+  }
+  function tutorialActive() {
+    return tutorialEnabled && index < lessons.length;
+  }
+  function paintTutorial(plan, phase = "") {
+    const active = tutorialActive() && !won && !lost;
+    const lesson = active ? lessons[index] : null;
+    tutorialCell = lesson && plan && !phase ? plan.cell : null;
+    $("tutorial").hidden = !active;
+    if (!active) return;
+    $("tutorial-topic").textContent = lesson.topic;
+    $("tutorial-action").textContent = phase || (plan ? lesson.steps[plan.step][0] : "想回到教学路线，点「撤销」或「重来」。也可以继续尝试。");
+    $("tutorial-feedback").textContent = tutorialFeedback;
+    $("tutorial-feedback").hidden = !tutorialFeedback || !!phase;
+  }
+  function tutorialOutcome(result, plan, cell) {
+    if (plan && plan.cell === cell) return lessons[index].steps[plan.step][1];
+    const outcome = result.popped ? `这一声消掉了 ${result.popped} 只。` : "这一声没有消除。";
+    return result.won ? outcome : outcome + " 带 ↻ 的格子会在下一声自动回响。";
   }
   function release(p) {
     return __async(this, null, function* () {
@@ -2093,7 +2175,7 @@ ${r.popped ? "空出来的位置能继续用。" : "这次留下的印记，下�
         $("board-wrap").classList.add("bump");
         return;
       }
-      const plan = authored(), why = (plan == null ? void 0 : plan.cell) === p ? plan.why : "";
+      const plan = tutorialActive() ? authored() : null;
       history.push(E.clone(state));
       busy = true;
       hinting = false;
@@ -2102,9 +2184,10 @@ ${r.popped ? "空出来的位置能继续用。" : "这次留下的印记，下�
       const token = ++revision;
       let turnPairs = 0;
       $("preview").innerHTML = "";
+      paintTutorial(null, "新气浪先从刚点的空格吹出去。");
       boardPaint();
       stats();
-      status("看看这一声能连消几组。");
+      status("");
       function animate(data, echo) {
         return __async(this, null, function* () {
           var _a;
@@ -2139,6 +2222,11 @@ ${r.popped ? "空出来的位置能继续用。" : "这次留下的印记，下�
       }
       if (!(yield animate(r.first, false))) return;
       if (r.second && r.first.items.length) {
+        paintTutorial(null, "回声接着从上一次点的 ↻ 格吹出。");
+        if (tutorialActive()) {
+          yield delay(350);
+          if (token !== revision) return;
+        }
         if (!(yield animate(r.second, true))) return;
       }
       if (token !== revision) return;
@@ -2147,12 +2235,12 @@ ${r.popped ? "空出来的位置能继续用。" : "这次留下的印记，下�
       busy = false;
       won = r.won;
       lost = r.lost;
-      lastResult = r;
+      if (tutorialActive()) tutorialFeedback = tutorialOutcome(r, plan, p);
+      paintTutorial(tutorialActive() && !won && !lost ? authored() : null);
       pieces();
       boardPaint();
       stats();
       preview();
-      status(why || `这一声清掉 ${r.popped} 只，${level().limit - state.moves} 声还可以继续安排。`);
       if (won || lost) finish();
     });
   }
@@ -2172,8 +2260,8 @@ ${r.popped ? "空出来的位置能继续用。" : "这次留下的印记，下�
       $("result-icon").textContent = "✦";
       $("result-kicker").textContent = state.combo >= 3 ? "WHAT A LOVELY CHAIN!" : "CLEAN BOARD. NICE LITTLE PUFFS.";
       $("result-title").textContent = "清光了，漂亮！";
-      $("result-detail").textContent = `${state.moves} 声，清掉 ${state.cleared} 只${state.combo >= 2 ? "\n最高 " + state.combo + " 组连消" : "，还有 " + (level().limit - state.moves) + " 声余量"}。`;
-      $("result-primary").textContent = index === L.length - 1 ? "全部完成，再消一遍 →" : "下一盘 →";
+      $("result-detail").textContent = tutorialActive() && tutorialFeedback ? tutorialFeedback : `${state.moves} 声，清掉 ${state.cleared} 只${state.combo >= 2 ? "\n最高 " + state.combo + " 组连消" : "，还有 " + (level().limit - state.moves) + " 声余量"}。`;
+      $("result-primary").textContent = tutorialActive() && index === lessons.length - 1 ? "开始独立解谜 →" : index === L.length - 1 ? "全部完成，再消一遍 →" : "下一盘 →";
       $("result-secondary").textContent = "再消一次";
       status(`第 ${index + 1} 盘清空。消除后的空位，也成了下一阵风的路。`);
     } else {
@@ -2197,10 +2285,11 @@ ${r.popped ? "空出来的位置能继续用。" : "这次留下的印记，下�
     hinting = false;
     selected = null;
     hintCell = null;
-    lastResult = null;
+    tutorialFeedback = "";
     $("result").hidden = true;
     $("effects").innerHTML = "";
     pieces(visual, true);
+    paintTutorial(tutorialActive() ? authored() : null);
     boardPaint();
     stats();
     preview();
@@ -2219,13 +2308,14 @@ ${r.popped ? "空出来的位置能继续用。" : "这次留下的印记，下�
     hinting = false;
     selected = null;
     hintCell = null;
-    lastResult = null;
+    tutorialFeedback = "";
     $("result").hidden = true;
     $("effects").innerHTML = "";
     $("chapter").textContent = `第 ${index + 1} 关 / ${L.length}`;
     $("title").textContent = level().title;
     $("board").innerHTML = Array.from({ length: 36 }, (_, p) => `<button type="button" class="cell" data-cell="${p}" data-testid="cell-${p}"></button>`).join("");
     pieces(visual, true);
+    paintTutorial(tutorialActive() ? authored() : null);
     boardPaint();
     stats();
     nav();
@@ -2330,6 +2420,18 @@ ${r.popped ? "空出来的位置能继续用。" : "这次留下的印记，下�
   }
   $("help").addEventListener("click", openHelp);
   for (const id of ["close-help", "help-play"]) $(id).addEventListener("click", closeHelp);
+  $("help-tutorial").addEventListener("click", () => {
+    closeHelp();
+    tutorialEnabled = true;
+    load(0);
+    safeScroll();
+  });
+  $("tutorial-skip").addEventListener("click", () => {
+    tutorialEnabled = false;
+    tutorialFeedback = "";
+    paintTutorial(null);
+    boardPaint();
+  });
   document.addEventListener("keydown", (e) => {
     if (e.ctrlKey || e.metaKey || e.altKey || $("help-dialog").open || /INPUT|TEXTAREA|SELECT/.test(e.target.tagName)) return;
     const k = e.key.toLowerCase();

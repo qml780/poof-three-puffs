@@ -38,6 +38,30 @@ var __async = (__this, __arguments, generator) => {
   "use strict";
   const E = window.ClearEngine, L = window.ClearLevels, $ = (id) => document.getElementById(id), colors = ["#edb2bf", "#a2d6c2", "#baa9e1"], symbols = ["▲", "●", "✦"], names = ["粉色", "绿色", "紫色"];
   const chapterNames = ["01 · 碰碰消", "02 · 借位组合", "03 · 三声进阶", "04 · 连锁棋局", "05 · 极限配对"], chapterTabs = ["碰撞", "借位", "进阶", "棋局", "极限"], scoreKey = "poof-clear-expert-v1-best";
+  const lessons = [
+    { topic: "点空格，让同色相撞", steps: [
+      ["点粉色左边的亮格。目标是三声内清空棋盘。", "气浪把近处的粉色向右推了一格。同色一撞，两只一起消失。"]
+    ] },
+    { topic: "一格能吹四面", steps: [
+      ["点中央发亮的空格，看看上下左右会发生什么。", "同一声气浪向四个方向推，一次消掉四对。"]
+    ] },
+    { topic: "消掉一对，风还能继续吹", steps: [
+      ["点左侧亮格，盯住同一行的粉色和绿色。", "粉色消失后，同一阵风穿过去，又消掉了绿色。"],
+      ["点下方紫色左边的亮格，把最后一对碰掉。", "这一关用两声清盘。每次点击只扣一声，连消也一样。"]
+    ] },
+    { topic: "看懂回声", steps: [
+      ["点粉色左边的亮格，先把两只粉色推近。", "粉色只靠近了一格。带 ↻ 的空格下一声会再吹一次。"],
+      ["点下方亮格。看绿色先消失，再看 ↻ 从哪里吹。", "新气浪先消绿色，回声再从旧位置消粉色。两阵风只扣一声。"]
+    ] },
+    { topic: "用上刚空出来的格子", steps: [
+      ["点左侧亮格，看看粉色消掉后，绿色有没有移动。", "粉色让出了空位，气浪穿过去，把绿色推近一格。"],
+      ["点原来被粉色占住的亮格，向右吹剩下的绿色。", "刚消出来的空格变成了新的发力点。"]
+    ] },
+    { topic: "安排新气浪和回声", steps: [
+      ["点粉色左边的亮格，把粉色推开，腾出下次的落点。", "粉色原来站的格子空了，第一声的位置留着 ↻。"],
+      ["点新亮格。看新气浪和旧回声怎样接力推粉色。", "新气浪消绿色、推近粉色，旧回声补上最后一推。后面就由你自己找落点了。"]
+    ] }
+  ];
   const layoutKey = (l) => l.scoreKey || l.id, scoreFor = (l) => best[layoutKey(l)];
   function mergeScores(target, source) {
     if (!source || typeof source !== "object") return;
@@ -56,7 +80,8 @@ var __async = (__this, __arguments, generator) => {
   }
   if (!best || typeof best !== "object" || Array.isArray(best)) best = {};
   const reduced = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches), delay = (ms) => new Promise((r) => setTimeout(r, reduced ? 1 : ms));
-  let index = 0, page = 0, state, visual = [], history = [], selected = null, hintCell = null, busy = false, won = false, lost = false, revision = 0, hinting = false, lastResult = null;
+  let index = 0, page = 0, state, visual = [], history = [], selected = null, hintCell = null, busy = false, won = false, lost = false, revision = 0, hinting = false;
+  let tutorialEnabled = true, tutorialCell = null, tutorialFeedback = "";
   const level = () => L[index], where = (p) => `${Math.floor(p / 6) + 1}行${p % 6 + 1}列`;
   function status(text, error = false, reveal = false) {
     $("status").textContent = error || reveal ? text : "";
@@ -120,9 +145,11 @@ var __async = (__this, __arguments, generator) => {
     for (const el of $("board").children) {
       const p = +el.dataset.cell, item = visual.find((i) => i.pos === p), wall = l.walls.includes(p);
       el.className = "cell" + (item ? " occupied" : "") + (wall ? " wall" : "") + (selected === p && !busy && !won && !lost ? " selected" : "") + (state.echo === p ? " echo" : "") + (hintCell === p ? " hinted" : "");
-      el.setAttribute("aria-label", `第${Math.floor(p / 6) + 1}行第${p % 6 + 1}列，${wall ? "墙" : item ? names[item.color] + symbols[item.color] + "角色" : "空格"}`);
+      const guided = !busy && p === tutorialCell;
+      if (guided) el.classList.add("tutorial-target");
+      el.setAttribute("aria-label", `第${Math.floor(p / 6) + 1}行第${p % 6 + 1}列，${wall ? "墙" : item ? names[item.color] + symbols[item.color] + "角色" : "空格"}${guided ? "，教学推荐" : ""}`);
       el.setAttribute("aria-disabled", String(busy || won || lost || !!item || wall));
-      el.innerHTML = index === 0 && state.moves === 0 && selected === null && !busy && p === 13 ? '<span class="starter">✦</span>' : "";
+      el.innerHTML = guided && selected !== p ? '<span class="starter" aria-hidden="true">✦</span>' : "";
     }
   }
   function stats() {
@@ -147,9 +174,7 @@ var __async = (__this, __arguments, generator) => {
     if (!parts.length) return p.events.some((h) => h.kind === "blocked") ? "异色挡住，保持原位" : p.events.some((h) => h.kind === "wall") ? "边界挡住，保持原位" : "这阵风暂时不推动角色";
     return parts.join("，");
   }
-  function summary(r, past = false) {
-    if (past) return `刚才这一声：清掉 ${r.popped} 只${r.pairs >= 2 ? ` · ${r.pairs} 组连消！` : ""}
-${r.popped ? "空出来的位置能继续用。" : "这次留下的印记，下一声会回响。"}`;
+  function summary(r) {
     return `① ${phaseText(r.first)}${r.second ? "\n② " + phaseText(r.second) : "\n② 本次位置会留给下一声回响"}${r.won ? " · 这一声可以清空！" : ""}`;
   }
   function preview() {
@@ -231,10 +256,29 @@ ${r.popped ? "空出来的位置能继续用。" : "这次留下的印记，下�
   function authored() {
     let s = E.initial(level());
     for (let i = 0; i < level().solution.length; i++) {
-      if (E.signature(s) === E.signature(state) && level().solution.length - i <= level().limit - state.moves) return { cell: level().solution[i], why: level().why[i] };
+      if (E.signature(s) === E.signature(state) && level().solution.length - i <= level().limit - state.moves) return { cell: level().solution[i], why: level().why[i], step: i };
       s = E.act(s, level().solution[i], level()).state;
     }
     return null;
+  }
+  function tutorialActive() {
+    return tutorialEnabled && index < lessons.length;
+  }
+  function paintTutorial(plan, phase = "") {
+    const active = tutorialActive() && !won && !lost;
+    const lesson = active ? lessons[index] : null;
+    tutorialCell = lesson && plan && !phase ? plan.cell : null;
+    $("tutorial").hidden = !active;
+    if (!active) return;
+    $("tutorial-topic").textContent = lesson.topic;
+    $("tutorial-action").textContent = phase || (plan ? lesson.steps[plan.step][0] : "想回到教学路线，点「撤销」或「重来」。也可以继续尝试。");
+    $("tutorial-feedback").textContent = tutorialFeedback;
+    $("tutorial-feedback").hidden = !tutorialFeedback || !!phase;
+  }
+  function tutorialOutcome(result, plan, cell) {
+    if (plan && plan.cell === cell) return lessons[index].steps[plan.step][1];
+    const outcome = result.popped ? `这一声消掉了 ${result.popped} 只。` : "这一声没有消除。";
+    return result.won ? outcome : outcome + " 带 ↻ 的格子会在下一声自动回响。";
   }
   function release(p) {
     return __async(this, null, function* () {
@@ -247,7 +291,7 @@ ${r.popped ? "空出来的位置能继续用。" : "这次留下的印记，下�
         $("board-wrap").classList.add("bump");
         return;
       }
-      const plan = authored(), why = (plan == null ? void 0 : plan.cell) === p ? plan.why : "";
+      const plan = tutorialActive() ? authored() : null;
       history.push(E.clone(state));
       busy = true;
       hinting = false;
@@ -256,9 +300,10 @@ ${r.popped ? "空出来的位置能继续用。" : "这次留下的印记，下�
       const token = ++revision;
       let turnPairs = 0;
       $("preview").innerHTML = "";
+      paintTutorial(null, "新气浪先从刚点的空格吹出去。");
       boardPaint();
       stats();
-      status("看看这一声能连消几组。");
+      status("");
       function animate(data, echo) {
         return __async(this, null, function* () {
           var _a;
@@ -293,6 +338,11 @@ ${r.popped ? "空出来的位置能继续用。" : "这次留下的印记，下�
       }
       if (!(yield animate(r.first, false))) return;
       if (r.second && r.first.items.length) {
+        paintTutorial(null, "回声接着从上一次点的 ↻ 格吹出。");
+        if (tutorialActive()) {
+          yield delay(350);
+          if (token !== revision) return;
+        }
         if (!(yield animate(r.second, true))) return;
       }
       if (token !== revision) return;
@@ -301,12 +351,12 @@ ${r.popped ? "空出来的位置能继续用。" : "这次留下的印记，下�
       busy = false;
       won = r.won;
       lost = r.lost;
-      lastResult = r;
+      if (tutorialActive()) tutorialFeedback = tutorialOutcome(r, plan, p);
+      paintTutorial(tutorialActive() && !won && !lost ? authored() : null);
       pieces();
       boardPaint();
       stats();
       preview();
-      status(why || `这一声清掉 ${r.popped} 只，${level().limit - state.moves} 声还可以继续安排。`);
       if (won || lost) finish();
     });
   }
@@ -326,8 +376,8 @@ ${r.popped ? "空出来的位置能继续用。" : "这次留下的印记，下�
       $("result-icon").textContent = "✦";
       $("result-kicker").textContent = state.combo >= 3 ? "WHAT A LOVELY CHAIN!" : "CLEAN BOARD. NICE LITTLE PUFFS.";
       $("result-title").textContent = "清光了，漂亮！";
-      $("result-detail").textContent = `${state.moves} 声，清掉 ${state.cleared} 只${state.combo >= 2 ? "\n最高 " + state.combo + " 组连消" : "，还有 " + (level().limit - state.moves) + " 声余量"}。`;
-      $("result-primary").textContent = index === L.length - 1 ? "全部完成，再消一遍 →" : "下一盘 →";
+      $("result-detail").textContent = tutorialActive() && tutorialFeedback ? tutorialFeedback : `${state.moves} 声，清掉 ${state.cleared} 只${state.combo >= 2 ? "\n最高 " + state.combo + " 组连消" : "，还有 " + (level().limit - state.moves) + " 声余量"}。`;
+      $("result-primary").textContent = tutorialActive() && index === lessons.length - 1 ? "开始独立解谜 →" : index === L.length - 1 ? "全部完成，再消一遍 →" : "下一盘 →";
       $("result-secondary").textContent = "再消一次";
       status(`第 ${index + 1} 盘清空。消除后的空位，也成了下一阵风的路。`);
     } else {
@@ -351,10 +401,11 @@ ${r.popped ? "空出来的位置能继续用。" : "这次留下的印记，下�
     hinting = false;
     selected = null;
     hintCell = null;
-    lastResult = null;
+    tutorialFeedback = "";
     $("result").hidden = true;
     $("effects").innerHTML = "";
     pieces(visual, true);
+    paintTutorial(tutorialActive() ? authored() : null);
     boardPaint();
     stats();
     preview();
@@ -373,13 +424,14 @@ ${r.popped ? "空出来的位置能继续用。" : "这次留下的印记，下�
     hinting = false;
     selected = null;
     hintCell = null;
-    lastResult = null;
+    tutorialFeedback = "";
     $("result").hidden = true;
     $("effects").innerHTML = "";
     $("chapter").textContent = `第 ${index + 1} 关 / ${L.length}`;
     $("title").textContent = level().title;
     $("board").innerHTML = Array.from({ length: 36 }, (_, p) => `<button type="button" class="cell" data-cell="${p}" data-testid="cell-${p}"></button>`).join("");
     pieces(visual, true);
+    paintTutorial(tutorialActive() ? authored() : null);
     boardPaint();
     stats();
     nav();
@@ -484,6 +536,18 @@ ${r.popped ? "空出来的位置能继续用。" : "这次留下的印记，下�
   }
   $("help").addEventListener("click", openHelp);
   for (const id of ["close-help", "help-play"]) $(id).addEventListener("click", closeHelp);
+  $("help-tutorial").addEventListener("click", () => {
+    closeHelp();
+    tutorialEnabled = true;
+    load(0);
+    safeScroll();
+  });
+  $("tutorial-skip").addEventListener("click", () => {
+    tutorialEnabled = false;
+    tutorialFeedback = "";
+    paintTutorial(null);
+    boardPaint();
+  });
   document.addEventListener("keydown", (e) => {
     if (e.ctrlKey || e.metaKey || e.altKey || $("help-dialog").open || /INPUT|TEXTAREA|SELECT/.test(e.target.tagName)) return;
     const k = e.key.toLowerCase();
